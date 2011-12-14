@@ -1,0 +1,22 @@
+
+!CONFIGURATION: 'com.ti.ccstudio.buildDefinitions.C2000.Debug.1930423932' [Wed Nov 23 18:30:14 BRST 2011]
+
+	!TOOL: 'com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerDebug.1690554089./DSP_Maquina_Solda/DSP2833x_common/cmd/F28335.cmd'
+
+		!WARNING: Unresolved option: com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerDebug.1690554089./DSP_Maquina_Solda/DSP2833x_common/cmd/F28335.cmd::-q
+
+	!TOOL: 'com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerDebug.1690554089./DSP_Maquina_Solda/DSP2833x_headers/cmd/DSP2833x_Headers_nonBIOS.cmd'
+
+		!WARNING: Unresolved option: com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerDebug.1690554089./DSP_Maquina_Solda/DSP2833x_headers/cmd/DSP2833x_Headers_nonBIOS.cmd::-q
+
+
+!CONFIGURATION: 'com.ti.ccstudio.buildDefinitions.C2000.Release.1468270426' [Wed Nov 23 18:30:15 BRST 2011]
+
+	!TOOL: 'com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerRelease.803712282./DSP_Maquina_Solda/DSP2833x_common/cmd/F28335.cmd'
+
+		!WARNING: Unresolved option: com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerRelease.803712282./DSP_Maquina_Solda/DSP2833x_common/cmd/F28335.cmd::-q
+
+	!TOOL: 'com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerRelease.803712282./DSP_Maquina_Solda/DSP2833x_headers/cmd/DSP2833x_Headers_nonBIOS.cmd'
+
+		!WARNING: Unresolved option: com.ti.ccstudio.buildDefinitions.C2000_6.0.exe.linkerRelease.803712282./DSP_Maquina_Solda/DSP2833x_headers/cmd/DSP2833x_Headers_nonBIOS.cmd::-q
+

@@ -1,0 +1,105 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="Maquina_Solda"
+ProjectDir="C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\"
+ProjectType=Executable
+CPUFamily=TMS320C28XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="DSP2833x_common\source\DSP2833x_Adc.c"
+Source="DSP2833x_common\source\DSP2833x_ADC_cal.asm"
+Source="DSP2833x_common\source\DSP2833x_CodeStartBranch.asm"
+Source="DSP2833x_common\source\DSP2833x_CpuTimers.c"
+Source="DSP2833x_common\source\DSP2833x_DefaultIsr.c"
+Source="DSP2833x_common\source\DSP2833x_EPwm.c"
+Source="DSP2833x_common\source\DSP2833x_MemCopy.c"
+Source="DSP2833x_common\source\DSP2833x_PieCtrl.c"
+Source="DSP2833x_common\source\DSP2833x_PieVect.c"
+Source="DSP2833x_common\source\DSP2833x_Spi.c"
+Source="DSP2833x_common\source\DSP2833x_SysCtrl.c"
+Source="DSP2833x_common\source\DSP2833x_usDelay.asm"
+Source="DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.c"
+Source="Jakson_Bibliotecas\J_PI.h"
+Source="Jakson_Bibliotecas\J_RMS.c"
+Source="Jakson_Bibliotecas\J_RMS.h"
+Source="Jakson_Bibliotecas\J_SciA_Protocolo_27_02_10.c"
+Source="Jakson_Bibliotecas\J_SpiA.c"
+Source="Jakson_Bibliotecas\J_xInt.c"
+Source="Jakson_Bibliotecas\Jakson_Prototipos_Funcoes.h"
+Source="Jakson_Bibliotecas\Modo_KIR.c"
+Source="Jakson_Bibliotecas\Modo_KIR.h"
+Source="Jakson_Bibliotecas\PLL.c"
+Source="Jakson_Bibliotecas\Solda.h"
+Source="Jakson_Bibliotecas\Solda_v1.c"
+Source="Jakson_Funcoes.c"
+Source="Maquina_Solda.c"
+Source="DSP2833x_common\cmd\F28335.cmd"
+Source="DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -pdr -as -fr"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug" -fs"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug" -i"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\DSP2833x_common\include" -i"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\DSP2833x_headers\include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Release" -d"LARGE_MODEL" -ml -v28
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v28
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v28
+
+["Linker" Settings: "Debug"]
+Options=-q -c -ecode_start -heap0x1000 -m".\Debug\Example_2833xSpi_FFDLB_int.map" -o".\Debug\Example_2833xSpi_FFDLB_int.out" -stack0x300 -w -x -i"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\DSP2833x_headers\include" -i"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\DSP2833x_common\include" -l"rts2800_fpu32.lib"
+
+["Linker" Settings: "Release"]
+Options=-q -c -o".\Release\Example_2833xSpi_FFDLB_int.out" -x
+
+["Jakson_Bibliotecas\J_PI.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\J_PI.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\J_RMS.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\J_RMS.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\Jakson_Prototipos_Funcoes.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\Jakson_Prototipos_Funcoes.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\Modo_KIR.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\Modo_KIR.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\Solda.h" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["Jakson_Bibliotecas\Solda.h" Settings: "Release"]
+ExcludeFromBuild=true
+
+["DSP2833x_common\cmd\F28335.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["DSP2833x_common\cmd\F28335.cmd" Settings: "Release"]
+LinkOrder=1
+
+["DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd" Settings: "Debug"]
+LinkOrder=1
+
+["DSP2833x_headers\cmd\DSP2833x_Headers_nonBIOS.cmd" Settings: "Release"]
+LinkOrder=1
+

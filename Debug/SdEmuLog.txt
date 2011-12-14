@@ -1,0 +1,11 @@
+***** Spectrum Digital Inc.   *****
+***** www.spectrumdigital.com *****
+
+Config File Path (sdopts.cfg) = C:\WINDOWS\system32
+Incoming Port Address     = 0x0378
+EmuPortAddr               = 0x0378
+EmuPortMode               = SPP8
+EmuPortSpeed              = 0
+EmuAddLinkDelay(Total)    = 0
+EmuDisablePolling         = YES
+SCIF Error                = 0

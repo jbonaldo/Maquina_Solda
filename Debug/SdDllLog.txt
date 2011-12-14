@@ -1,0 +1,1 @@
+LoadLibrary sdsmg51095.dll, Port Address 0x0378

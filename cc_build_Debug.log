@@ -1,0 +1,92 @@
+-----------------------  DSP_Maquina_Solda.pjt - Debug  -----------------------
+[DSP2833x_Adc.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_Adc.c"
+
+[DSP2833x_ADC_cal.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_ADC_cal.asm"
+
+[DSP2833x_CodeStartBranch.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_CodeStartBranch.asm"
+
+[DSP2833x_CpuTimers.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_CpuTimers.c"
+
+[DSP2833x_DefaultIsr.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_DefaultIsr.c"
+"DSP2833x_DefaultIsr.c", line 98: remark: function declared implicitly
+
+[DSP2833x_EPwm.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_EPwm.c"
+
+[DSP2833x_MemCopy.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_MemCopy.c"
+
+[DSP2833x_PieCtrl.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_PieCtrl.c"
+
+[DSP2833x_PieVect.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_PieVect.c"
+
+[DSP2833x_Spi.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_Spi.c"
+
+[DSP2833x_SysCtrl.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_SysCtrl.c"
+
+[DSP2833x_usDelay.asm] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_usDelay.asm"
+
+[DSP2833x_GlobalVariableDefs.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../../Debug.lkf" "DSP2833x_GlobalVariableDefs.c"
+
+[J_RMS.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "J_RMS.c"
+"Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"J_RMS.c", line 21: remark: parameter "rms" was never referenced
+
+[J_SciA_Protocolo_27_02_10.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "J_SciA_Protocolo_27_02_10.c"
+"Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"J_SciA_Protocolo_27_02_10.c", line 185: warning: missing return statement at end of non-void function "SciA_Enviar_5bytes"
+"J_SciA_Protocolo_27_02_10.c", line 223: warning: missing return statement at end of non-void function "SciA_Enviar_Pacote"
+"J_SciA_Protocolo_27_02_10.c", line 264: warning: variable "temp" was declared but never referenced
+"J_SciA_Protocolo_27_02_10.c", line 266: warning: variable "vartemp" was declared but never referenced
+"J_SciA_Protocolo_27_02_10.c", line 267: warning: variable "i" was declared but never referenced
+"J_SciA_Protocolo_27_02_10.c", line 491: warning: variable "checksum_recebido" was set but never used
+
+[J_SpiA.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "J_SpiA.c"
+"Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"J_SpiA.c", line 57: warning: variable "temp" was set but never used
+"J_SpiA.c", line 224: warning: variable "i" was declared but never referenced
+"J_SpiA.c", line 256: warning: last line of file ends without a newline
+
+[J_xInt.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "J_xInt.c"
+"Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+
+[Modo_KIR.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "Modo_KIR.c"
+"Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"Modo_KIR.c", line 16: remark: explicit type is missing ("int" assumed)
+"Modo_KIR.c", line 95: remark: missing return statement at end of non-void function "Calcular"
+"Modo_KIR.c", line 19: warning: variable "b1" was declared but never referenced
+"Modo_KIR.c", line 19: warning: variable "b2" was declared but never referenced
+"Modo_KIR.c", line 19: warning: variable "b3" was declared but never referenced
+"Modo_KIR.c", line 195: warning: a value of type "int (*)(struct _kir *)" cannot be used to initialize an entity of type "void (*)(struct _kir *)"
+
+[PLL.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "PLL.c"
+"PLL.c", line 29: warning: variable "produto_escalar_medio" was declared but never referenced
+
+[Solda_v1.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"../Debug.lkf" "Solda_v1.c"
+"Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"Solda_v1.c", line 202: warning: statement is unreachable
+"Solda_v1.c", line 233: warning: statement is unreachable
+"Solda_v1.c", line 259: warning: statement is unreachable
+"Solda_v1.c", line 277: warning: statement is unreachable
+"Solda_v1.c", line 289: warning: variable "flag" was set but never used
+"Solda_v1.c", line 352: remark: function declared implicitly
+"Solda_v1.c", line 502: remark: function declared implicitly
+"Solda_v1.c", line 513: warning: use of "=" where "==" may have been intended
+"Solda_v1.c", line 623: warning: last line of file ends without a newline
+
+[Jakson_Funcoes.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"Debug.lkf" "Jakson_Funcoes.c"
+"Jakson_Bibliotecas/Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"Jakson_Funcoes.c", line 314: warning: variable "valor" was declared but never referenced
+"Jakson_Funcoes.c", line 367: warning: last line of file ends without a newline
+
+[Maquina_Solda.c] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -g -q -pdr -as -fr"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -fs"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_common/include" -i"C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/DSP2833x_headers/include" -d"_DEBUG" -d"LARGE_MODEL" -ml -mt -v28 --float_support=fpu32 -@"Debug.lkf" "Maquina_Solda.c"
+"Jakson_Bibliotecas/Jakson_Prototipos_Funcoes.h", line 129: warning: last line of file ends without a newline
+"Maquina_Solda.c", line 172: remark: function declared implicitly
+"Maquina_Solda.c", line 253: remark: controlling expression is constant
+"Maquina_Solda.c", line 86: warning: variable "i" was declared but never referenced
+"Maquina_Solda.c", line 297: remark: function declared implicitly
+
+[Linking...] "C:\CCStudio_v3.3\C2000\cgtools\bin\cl2000" -@"Debug.lkf"
+<Linking>
+warning: entry-point symbol other than "_c_int00" specified:  "code_start"
+
+Build Complete,
+  0 Errors, 33 Warnings, 9 Remarks.
