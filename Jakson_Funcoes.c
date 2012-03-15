@@ -176,9 +176,9 @@ void Desabilita_Pulsos()
 {
 	EPwm1Regs.ETSEL.bit.INTEN = 0;		    // Disanable INT
 	EPwm1Regs.ETPS.bit.INTPRD = ET_DISABLE; // Nao gera mais interrupcoes
-	EPwm4Regs.AQCTLA.bit.ZRO = AQ_CLEAR;    //Desabilita Pulsos FaseA (PWM4)
-	//EPwm4Regs.AQCTLA.bit.PRD = AQ_SET;      //Desabilita Pulsos FaseA (PWM4)
-	EPwm1Regs.AQCTLA.bit.CAU = AQ_CLEAR;    //Desabilita Pulsos FaseA (PWM1 dispara PWM4)
+	EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;    //Desabilita Pulsos FaseA (PWM4)
+	EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;      //Desabilita Pulsos FaseA (PWM4)
+	//EPwm1Regs.AQCTLA.bit.CAU = AQ_CLEAR;    //Desabilita Pulsos FaseA (PWM1 dispara PWM4)
 /*
 	EPwm2Regs.ETSEL.bit.INTEN = 0;		    // Disanable INT
 	EPwm2Regs.ETPS.bit.INTPRD = ET_DISABLE; // Nao gera mais interrupcoes
@@ -218,7 +218,7 @@ void DetecaoZeroPLL()
 		EPwm1Regs.TBCTL.bit.SWFSYNC = 1;		//Força sincronizacao do PWM1 (Zera o counter)
 	//}
 
-	//Rms.Tensao.RMS120Hz(&Rms.Tensao);
+	Rms.Tensao.RMS120Hz(&Rms.Tensao);
 
 	if(Solda.soldar)
 	{

@@ -1,7 +1,7 @@
 ******************************************************************************
   TMS320C2000 Evaluation Linker PC v6.0.1                      
 ******************************************************************************
->> Linked Tue Dec 13 18:41:59 2011
+>> Linked Tue Mar 13 20:48:54 2012
 
 OUTPUT FILE NAME:   <MaquinaSolda2011.out>
 ENTRY POINT SYMBOL: "code_start"  address: 0033fff6
@@ -13,7 +13,7 @@ MEMORY CONFIGURATION
 ----------------------  --------  ---------  --------  --------  ----  --------
 PAGE 0:
   ZONE0                 00004000   00001000  00000000  00001000  RWIX
-  RAML0                 00008000   00001c00  000006a5  0000155b  RWIX
+  RAML0                 00008000   00001c00  000006b1  0000154f  RWIX
   RAML1                 00009c00   00000300  00000000  00000300  RWIX
   RAML2                 0000a000   00001000  00000000  00001000  RWIX
   RAML3                 0000b000   00001000  00000000  00001000  RWIX
@@ -23,9 +23,9 @@ PAGE 0:
   FLASHG                00308000   00008000  00000000  00008000  RWIX
   FLASHF                00310000   00008000  00000000  00008000  RWIX
   FLASHE                00318000   00008000  00000000  00008000  RWIX
-  FLASHD                00320000   0000e000  000006a5  0000d95b  RWIX
+  FLASHD                00320000   0000e000  000006b1  0000d94f  RWIX
   FLASHC                0032e000   00001000  00000000  00001000  RWIX
-  FLASHA                00338000   00007f80  0000186b  00006715  RWIX
+  FLASHA                00338000   00007f80  0000186d  00006713  RWIX
   CSM_RSVD              0033ff80   00000076  00000000  00000076  RWIX
   BEGIN                 0033fff6   00000002  00000002  00000000  RWIX
   CSM_PWL               0033fff8   00000008  00000000  00000008  RWIX
@@ -107,69 +107,69 @@ section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
 .pinit     0    00338000    00000000     UNINITIALIZED
 
-ramfuncs   0    00320000    000006a5     RUN ADDR = 00008000
+ramfuncs   0    00320000    000006b1     RUN ADDR = 00008000
                   00320000    00000263     J_SciA_Protocolo_27_02_10.obj (ramfuncs)
                   00320263    000001bf     Modo_KIR.obj (ramfuncs)
-                  00320422    00000101     Jakson_Funcoes.obj (ramfuncs)
-                  00320523    0000008c     Maquina_Solda.obj (ramfuncs:retain)
-                  003205af    00000082     J_SpiA.obj (ramfuncs)
-                  00320631    00000055     J_RMS.obj (ramfuncs)
-                  00320686    0000001b     DSP2833x_SysCtrl.obj (ramfuncs)
-                  003206a1    00000004     DSP2833x_usDelay.obj (ramfuncs)
+                  00320422    00000105     Jakson_Funcoes.obj (ramfuncs)
+                  00320527    00000094     Maquina_Solda.obj (ramfuncs:retain)
+                  003205bb    00000082     J_SpiA.obj (ramfuncs)
+                  0032063d    00000055     J_RMS.obj (ramfuncs)
+                  00320692    0000001b     DSP2833x_SysCtrl.obj (ramfuncs)
+                  003206ad    00000004     DSP2833x_usDelay.obj (ramfuncs)
 
-.text      0    00338000    000015e0     
+.text      0    00338000    000015e2     
                   00338000    00000404     Solda_v1.obj (.text)
                   00338404    00000327     DSP2833x_DefaultIsr.obj (.text:retain)
-                  0033872b    000002f3     Maquina_Solda.obj (.text)
-                  00338a1e    000001b2     Jakson_Funcoes.obj (.text)
-                  00338bd0    0000015f     Modo_KIR.obj (.text)
-                  00338d2f    00000107     rts2800_fpu32.lib : ll_div.obj (.text)
-                  00338e36    000000f2     DSP2833x_SysCtrl.obj (.text)
-                  00338f28    000000c8     DSP2833x_EPwm.obj (.text)
-                  00338ff0    000000c2     J_SciA_Protocolo_27_02_10.obj (.text)
-                  003390b2    000000b4     PLL.obj (.text)
-                  00339166    0000009f     J_SpiA.obj (.text)
-                  00339205    00000088     rts2800_fpu32.lib : fs_div.obj (.text)
-                  0033928d    0000007c     DSP2833x_CpuTimers.obj (.text)
-                  00339309    0000005b     rts2800_fpu32.lib : sin.obj (.text)
-                  00339364    00000051     Maquina_Solda.obj (.text:retain)
-                  003393b5    00000048     J_xInt.obj (.text)
-                  003393fd    00000046     rts2800_fpu32.lib : boot.obj (.text)
-                  00339443    00000038     J_RMS.obj (.text)
-                  0033947b    00000036     J_SpiA.obj (.text:retain)
-                  003394b1    00000028     DSP2833x_PieCtrl.obj (.text)
-                  003394d9    00000022     DSP2833x_Spi.obj (.text)
-                  003394fb    00000022     rts2800_fpu32.lib : i_div.obj (.text)
-                  0033951d    00000020     DSP2833x_PieVect.obj (.text)
-                  0033953d    00000001     --HOLE-- [fill = 0]
-                  0033953e    00000020     rts2800_fpu32.lib : sqrt.obj (.text)
-                  0033955e    00000019                       : args_main.obj (.text)
-                  00339577    00000019                       : exit.obj (.text)
-                  00339590    00000015     DSP2833x_MemCopy.obj (.text)
-                  003395a5    00000011     J_xInt.obj (.text:retain)
-                  003395b6    0000000f     DSP2833x_Adc.obj (.text)
-                  003395c5    0000000a     rts2800_fpu32.lib : strlen.obj (.text)
-                  003395cf    00000009                       : _lock.obj (.text)
-                  003395d8    00000008     DSP2833x_CodeStartBranch.obj (.text)
+                  0033872b    000002f5     Maquina_Solda.obj (.text)
+                  00338a20    000001b2     Jakson_Funcoes.obj (.text)
+                  00338bd2    0000015f     Modo_KIR.obj (.text)
+                  00338d31    00000107     rts2800_fpu32.lib : ll_div.obj (.text)
+                  00338e38    000000f2     DSP2833x_SysCtrl.obj (.text)
+                  00338f2a    000000c8     DSP2833x_EPwm.obj (.text)
+                  00338ff2    000000c2     J_SciA_Protocolo_27_02_10.obj (.text)
+                  003390b4    000000b4     PLL.obj (.text)
+                  00339168    0000009f     J_SpiA.obj (.text)
+                  00339207    00000088     rts2800_fpu32.lib : fs_div.obj (.text)
+                  0033928f    0000007c     DSP2833x_CpuTimers.obj (.text)
+                  0033930b    0000005b     rts2800_fpu32.lib : sin.obj (.text)
+                  00339366    00000051     Maquina_Solda.obj (.text:retain)
+                  003393b7    00000048     J_xInt.obj (.text)
+                  003393ff    00000046     rts2800_fpu32.lib : boot.obj (.text)
+                  00339445    00000038     J_RMS.obj (.text)
+                  0033947d    00000036     J_SpiA.obj (.text:retain)
+                  003394b3    00000028     DSP2833x_PieCtrl.obj (.text)
+                  003394db    00000022     DSP2833x_Spi.obj (.text)
+                  003394fd    00000022     rts2800_fpu32.lib : i_div.obj (.text)
+                  0033951f    00000020     DSP2833x_PieVect.obj (.text)
+                  0033953f    00000001     --HOLE-- [fill = 0]
+                  00339540    00000020     rts2800_fpu32.lib : sqrt.obj (.text)
+                  00339560    00000019                       : args_main.obj (.text)
+                  00339579    00000019                       : exit.obj (.text)
+                  00339592    00000015     DSP2833x_MemCopy.obj (.text)
+                  003395a7    00000011     J_xInt.obj (.text:retain)
+                  003395b8    0000000f     DSP2833x_Adc.obj (.text)
+                  003395c7    0000000a     rts2800_fpu32.lib : strlen.obj (.text)
+                  003395d1    00000009                       : _lock.obj (.text)
+                  003395da    00000008     DSP2833x_CodeStartBranch.obj (.text)
 
-.econst    0    003395e0    00000158     
-                  003395e0    00000100     DSP2833x_PieVect.obj (.econst)
-                  003396e0    00000058     J_RMS.obj (.econst)
+.econst    0    003395e2    00000158     
+                  003395e2    00000100     DSP2833x_PieVect.obj (.econst)
+                  003396e2    00000058     J_RMS.obj (.econst)
 
-.cinit     0    00339738    0000010d     
-                  00339738    00000060     Jakson_Funcoes.obj (.cinit)
-                  00339798    00000031     Solda_v1.obj (.cinit)
-                  003397c9    0000002a     Modo_KIR.obj (.cinit)
-                  003397f3    00000027     PLL.obj (.cinit)
-                  0033981a    0000000c     J_RMS.obj (.cinit)
-                  00339826    0000000a     rts2800_fpu32.lib : _lock.obj (.cinit)
-                  00339830    0000000a                       : exit.obj (.cinit)
-                  0033983a    00000005     J_SpiA.obj (.cinit)
-                  0033983f    00000004     rts2800_fpu32.lib : errno.obj (.cinit)
-                  00339843    00000002     --HOLE-- [fill = 0]
+.cinit     0    0033973a    0000010d     
+                  0033973a    00000060     Jakson_Funcoes.obj (.cinit)
+                  0033979a    00000031     Solda_v1.obj (.cinit)
+                  003397cb    0000002a     Modo_KIR.obj (.cinit)
+                  003397f5    00000027     PLL.obj (.cinit)
+                  0033981c    0000000c     J_RMS.obj (.cinit)
+                  00339828    0000000a     rts2800_fpu32.lib : _lock.obj (.cinit)
+                  00339832    0000000a                       : exit.obj (.cinit)
+                  0033983c    00000005     J_SpiA.obj (.cinit)
+                  00339841    00000004     rts2800_fpu32.lib : errno.obj (.cinit)
+                  00339845    00000002     --HOLE-- [fill = 0]
 
-.switch    0    00339846    00000026     
-                  00339846    00000026     J_SciA_Protocolo_27_02_10.obj (.switch:_SciA_Comandos)
+.switch    0    00339848    00000026     
+                  00339848    00000026     J_SciA_Protocolo_27_02_10.obj (.switch:_SciA_Comandos)
 
 codestart 
 *          0    0033fff6    00000002     
@@ -408,14 +408,14 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 address    name
 --------   ----
 00338000   .text
-00339577   C$$EXIT
-00339205   FS$$DIV
-003394fb   I$$DIV
-0033950c   I$$MOD
-00338d2f   LL$$DIV
-00338d6b   LL$$MOD
-00338da5   ULL$$DIV
-00338dd4   ULL$$MOD
+00339579   C$$EXIT
+00339207   FS$$DIV
+003394fd   I$$DIV
+0033950e   I$$MOD
+00338d31   LL$$DIV
+00338d6d   LL$$MOD
+00338da7   ULL$$DIV
+00338dd6   ULL$$MOD
 003384fb   _ADCINT_ISR
 0000c811   _ADC_OffSet
 00380080   _ADC_cal
@@ -423,7 +423,7 @@ address    name
 00007100   _AdcRegs
 0000c83e   _Adc_offset
 000083dc   _AdicionarPonto
-003389db   _Ajusta_OffSet
+003389dd   _Ajusta_OffSet
 0000c819   _Alpha_LiMax
 0000c817   _Alpha_LiMin
 00008422   _AquisitaCanal_1
@@ -434,18 +434,18 @@ address    name
 00338082   _CalcularSkt
 0000c90a   _CompensacaoTensao
 0033836e   _CompensarTensao
-003392ce   _ConfigCpuTimer
+003392d0   _ConfigCpuTimer
 0033812b   _ConfiguraRampasKIR
 00338154   _ConfiguraRampasSKT
-003389bb   _Configura_ADC
+003389bd   _Configura_ADC
 003387db   _Configura_EPwm1
 00338816   _Configura_EPwm2
 00338838   _Configura_EPwm3
 0033885a   _Configura_EPwm4
-0033887b   _Configura_EPwm5
-0033889d   _Configura_EPwm6
-003388bf   _Configura_GPIO
-00338ff0   _Configura_SciA
+0033887d   _Configura_EPwm5
+0033889f   _Configura_EPwm6
+003388c1   _Configura_GPIO
+00338ff2   _Configura_SciA
 003380bf   _ConfigurarRampas
 0000c832   _Const_ADC_corrente
 0000c830   _Const_ADC_tensao
@@ -459,7 +459,7 @@ address    name
 00000c10   _CpuTimer2Regs
 0033fff8   _CsmPwl
 00000ae0   _CsmRegs
-00338ef7   _CsmUnlock
+00338ef9   _CsmUnlock
 00338418   _DATALOG_ISR
 0033861d   _DINTCH1_ISR
 00338627   _DINTCH2_ISR
@@ -467,16 +467,16 @@ address    name
 0033863b   _DINTCH4_ISR
 00338645   _DINTCH5_ISR
 0033864f   _DINTCH6_ISR
-000086a1   _DSP28x_usDelay
+000086ad   _DSP28x_usDelay
 000084cf   _Desabilita_Pulsos
-00338bc3   _DetecaoRogowiski
-000084e2   _DetecaoZeroPLL
+00338bc5   _DetecaoRogowiski
+000084e0   _DetecaoZeroPLL
 00000880   _DevEmuRegs
-0033903c   _DevolveACK
-00338e49   _DisableDog
+0033903e   _DevolveACK
+00338e4b   _DisableDog
 00001000   _DmaRegs
-003389a1   _Dog_Configura
-003389b1   _Dog_Reset
+003389a3   _Dog_Configura
+003389b3   _Dog_Reset
 003386a9   _ECAN0INTA_ISR
 003386bd   _ECAN0INTB_ISR
 003386b3   _ECAN1INTA_ISR
@@ -526,8 +526,8 @@ address    name
 003385d7   _EQEP2_INT_ISR
 00006b00   _EQep1Regs
 00006b40   _EQep2Regs
-003394d0   _EnableInterrupts
-00338c38   _EscolherPontos
+003394d2   _EnableInterrupts
+00338c3a   _EscolherPontos
 0000c901   _Estado
 0000c907   _Fim_pacote
 0000c81a   _FlagDetectandoBobina
@@ -550,33 +550,33 @@ address    name
 00338440   _ILLEGAL_ISR
 00338404   _INT13_ISR
 0033840e   _INT14_ISR
-003390b2   _InicializaPLL
-00338a6f   _Inicializa_Variaveis
+003390b4   _InicializaPLL
+00338a71   _Inicializa_Variaveis
 003382a7   _InicializarParametrosSolda
-00338d03   _InicializarVariaveis
-00338a6c   _Iniciar_Solda
-003395b6   _InitAdc
-0033928d   _InitCpuTimers
-00338f28   _InitEPwm
-00338f36   _InitEPwm1Gpio
-00338f48   _InitEPwm2Gpio
-00338f5a   _InitEPwm3Gpio
-00338f6e   _InitEPwm4Gpio
-00338f82   _InitEPwm5Gpio
-00338f94   _InitEPwm6Gpio
-00338f29   _InitEPwmGpio
-00338fa6   _InitEPwmSyncGpio
-00008686   _InitFlash
-00339181   _InitMcbspaGpio
-00338e9f   _InitPeripheralClocks
-003394b1   _InitPieCtrl
-0033951d   _InitPieVectTable
-00338e51   _InitPll
-003394d9   _InitSpi
-003394da   _InitSpiGpio
-003394dd   _InitSpiaGpio
-00338e36   _InitSysCtrl
-00338fba   _InitTzGpio
+00338d05   _InicializarVariaveis
+00338a6e   _Iniciar_Solda
+003395b8   _InitAdc
+0033928f   _InitCpuTimers
+00338f2a   _InitEPwm
+00338f38   _InitEPwm1Gpio
+00338f4a   _InitEPwm2Gpio
+00338f5c   _InitEPwm3Gpio
+00338f70   _InitEPwm4Gpio
+00338f84   _InitEPwm5Gpio
+00338f96   _InitEPwm6Gpio
+00338f2b   _InitEPwmGpio
+00338fa8   _InitEPwmSyncGpio
+00008692   _InitFlash
+00339183   _InitMcbspaGpio
+00338ea1   _InitPeripheralClocks
+003394b3   _InitPieCtrl
+0033951f   _InitPieVectTable
+00338e53   _InitPll
+003394db   _InitSpi
+003394dc   _InitSpiGpio
+003394df   _InitSpiaGpio
+00338e38   _InitSysCtrl
+00338fbc   _InitTzGpio
 0000c00c   _InvNAmostrasFiltro
 0000c880   _Kir
 0033870d   _LUF_ISR
@@ -586,17 +586,17 @@ address    name
 003385f5   _MRINTB_ISR
 00338613   _MXINTA_ISR
 003385ff   _MXINTB_ISR
-00338b5b   _MaquinaEstadoDetecaoRogowiski
+00338b5d   _MaquinaEstadoDetecaoRogowiski
 00338236   _MaquinaEstados
-003391d5   _McBsp_DAC
+003391d7   _McBsp_DAC
 00005000   _McbspaRegs
 00005040   _McbspbRegs
-00339590   _MemCopy
+00339592   _MemCopy
 00338436   _NMI_ISR
-00338bd0   _OrdenaPontos
+00338bd2   _OrdenaPontos
 00338717   _PIE_RESERVED
-003390ce   _PLL
-00338a69   _Parar_Solda
+003390d0   _PLL
+00338a6b   _Parar_Solda
 00380090   _PartIdRegs
 003381af   _Pausa
 0000c812   _Per120Hz
@@ -604,19 +604,19 @@ address    name
 0000c813   _PerTremPulsos
 00000ce0   _PieCtrlRegs
 00000d00   _PieVectTable
-003395e0   _PieVectTableInit
-00008651   _RMS_120Hz
-00008631   _RMS_Calcular
-00339443   _RMS_Inicializar
-00339447   _RMS_Inicializar_Estrutura
+003395e2   _PieVectTableInit
+0000865d   _RMS_120Hz
+0000863d   _RMS_Calcular
+00339445   _RMS_Inicializar
+00339449   _RMS_Inicializar_Estrutura
 00338422   _RTOSINT_ISR
-003206a5   _RamfuncsLoadEnd
+003206b1   _RamfuncsLoadEnd
 00320000   _RamfuncsLoadStart
 00008000   _RamfuncsRunStart
 00338174   _RampaDescida
 00338157   _RampaSubida
 00008209   _RecebePacote
-0033902f   _Reportar_Erro_Ilegal
+00339031   _Reportar_Erro_Ilegal
 0000c9c0   _Rms
 00338681   _SCIRXINTA_ISR
 00338695   _SCIRXINTB_ISR
@@ -632,25 +632,25 @@ address    name
 0000807b   _SciA_Comandos
 0000800c   _SciA_Enviar_5bytes
 0000803a   _SciA_Enviar_Pacote
-00339011   _SciA_Receber
-0033901a   _SciA_SendMsg
+00339013   _SciA_Receber
+0033901c   _SciA_SendMsg
 00008000   _SciA_Transmitir
-00339047   _SciReportarErro
+00339049   _SciReportarErro
 00007050   _SciaRegs
 00007750   _ScibRegs
 00007770   _ScicRegs
-00338e3f   _ServiceDog
+00338e41   _ServiceDog
 0033839a   _SetaSkt
-00338a1e   _SktUpdate
+00338a20   _SktUpdate
 0000c940   _Solda
 00338204   _SoldaContinua
 003381c1   _SoldaImpulsos
 00338192   _SoldaPrePos
 00338066   _SoldaPrincipal
-000085af   _SpiA_AquisicaoCorrente
-000085ce   _SpiA_AquisicaoTensao
-000085ed   _SpiA_CalibracaoAD
-00339166   _SpiA_Configura
+000085bb   _SpiA_AquisicaoCorrente
+000085da   _SpiA_AquisicaoTensao
+000085f9   _SpiA_CalibracaoAD
+00339168   _SpiA_Configura
 00007040   _SpiaRegs
 00007010   _SysCtrlRegs
 00338505   _TINT0_ISR
@@ -682,33 +682,33 @@ address    name
 00000001   __TI_args_main
 ffffffff   ___binit__
 ffffffff   ___c_args__
-00339738   ___cinit__
-003395e0   ___etext__
+0033973a   ___cinit__
+003395e2   ___etext__
 ffffffff   ___pinit__
 00338000   ___text__
-0033955e   __args_main
+00339560   __args_main
 0000c8f4   __cleanup_ptr
 0000c8f6   __dtors_ptr
 0000c83c   __lock
-003395d7   __nop
-003395d3   __register_lock
-003395cf   __register_unlock
+003395d9   __nop
+003395d5   __register_lock
+003395d1   __register_unlock
 00000400   __stack
 0000c83a   __unlock
-00339577   _abort
-003393fd   _c_int00
+00339579   _abort
+003393ff   _c_int00
 0000c82c   _corrente_pu
-00339364   _cpu_timer0_isr
-00008523   _epwm1_isr
-0033939b   _epwm2_isr
-003393a8   _epwm3_isr
+00339366   _cpu_timer0_isr
+00008527   _epwm1_isr
+0033939d   _epwm2_isr
+003393aa   _epwm3_isr
 0000c8eb   _errno
-00339579   _exit
+0033957b   _exit
 0000c8d4   _f2l
 0000c8d2   _i
 0000c815   _ii
-00339197   _init_mcbsp_spi
-00339052   _itoa
+00339199   _init_mcbsp_spi
+00339054   _itoa
 0000c8d6   _jfloat
 0033872b   _main
 00338000   _pegaCorrente
@@ -716,23 +716,23 @@ ffffffff   ___pinit__
 0000c81c   _portB
 00338721   _rsvd_ISR
 0000c8dc   _sTemp
-00338b11   _set_mux_corrente
-00339309   _sin
-0033948c   _spiRxFifoIsr
-0033947b   _spiTxFifoIsr
-0033953e   _sqrt
-003395c5   _strlen
+00338b13   _set_mux_corrente
+0033930b   _sin
+0033948e   _spiRxFifoIsr
+0033947d   _spiTxFifoIsr
+00339540   _sqrt
+003395c7   _strlen
 0000c828   _temp_dac
 0000c82e   _tensao_pu
 003383e6   _verificaEmergencia
 0000c040   _vetor
-003395a5   _xInt3_isr
-003393cd   _xInt_Configura
-003393b5   _xInt_ConfiguraIO
+003395a7   _xInt3_isr
+003393cf   _xInt_Configura
+003393b7   _xInt_ConfiguraIO
 ffffffff   binit
-00339738   cinit
+0033973a   cinit
 0033fff6   code_start
-003395e0   etext
+003395e2   etext
 ffffffff   pinit
 
 
@@ -803,15 +803,15 @@ address    name
 00008422   _AquisitaCanal_1
 000084c2   _Habilita_Pulsos
 000084cf   _Desabilita_Pulsos
-000084e2   _DetecaoZeroPLL
-00008523   _epwm1_isr
-000085af   _SpiA_AquisicaoCorrente
-000085ce   _SpiA_AquisicaoTensao
-000085ed   _SpiA_CalibracaoAD
-00008631   _RMS_Calcular
-00008651   _RMS_120Hz
-00008686   _InitFlash
-000086a1   _DSP28x_usDelay
+000084e0   _DetecaoZeroPLL
+00008527   _epwm1_isr
+000085bb   _SpiA_AquisicaoCorrente
+000085da   _SpiA_AquisicaoTensao
+000085f9   _SpiA_CalibracaoAD
+0000863d   _RMS_Calcular
+0000865d   _RMS_120Hz
+00008692   _InitFlash
+000086ad   _DSP28x_usDelay
 0000c00c   _InvNAmostrasFiltro
 0000c040   _vetor
 0000c810   _HalfPerDAC_PWM
@@ -862,7 +862,7 @@ address    name
 0000c99e   _CpuTimer0
 0000c9c0   _Rms
 00320000   _RamfuncsLoadStart
-003206a5   _RamfuncsLoadEnd
+003206b1   _RamfuncsLoadEnd
 00338000   .text
 00338000   ___text__
 00338000   _pegaCorrente
@@ -969,95 +969,95 @@ address    name
 00338816   _Configura_EPwm2
 00338838   _Configura_EPwm3
 0033885a   _Configura_EPwm4
-0033887b   _Configura_EPwm5
-0033889d   _Configura_EPwm6
-003388bf   _Configura_GPIO
-003389a1   _Dog_Configura
-003389b1   _Dog_Reset
-003389bb   _Configura_ADC
-003389db   _Ajusta_OffSet
-00338a1e   _SktUpdate
-00338a69   _Parar_Solda
-00338a6c   _Iniciar_Solda
-00338a6f   _Inicializa_Variaveis
-00338b11   _set_mux_corrente
-00338b5b   _MaquinaEstadoDetecaoRogowiski
-00338bc3   _DetecaoRogowiski
-00338bd0   _OrdenaPontos
-00338c38   _EscolherPontos
-00338d03   _InicializarVariaveis
-00338d2f   LL$$DIV
-00338d6b   LL$$MOD
-00338da5   ULL$$DIV
-00338dd4   ULL$$MOD
-00338e36   _InitSysCtrl
-00338e3f   _ServiceDog
-00338e49   _DisableDog
-00338e51   _InitPll
-00338e9f   _InitPeripheralClocks
-00338ef7   _CsmUnlock
-00338f28   _InitEPwm
-00338f29   _InitEPwmGpio
-00338f36   _InitEPwm1Gpio
-00338f48   _InitEPwm2Gpio
-00338f5a   _InitEPwm3Gpio
-00338f6e   _InitEPwm4Gpio
-00338f82   _InitEPwm5Gpio
-00338f94   _InitEPwm6Gpio
-00338fa6   _InitEPwmSyncGpio
-00338fba   _InitTzGpio
-00338ff0   _Configura_SciA
-00339011   _SciA_Receber
-0033901a   _SciA_SendMsg
-0033902f   _Reportar_Erro_Ilegal
-0033903c   _DevolveACK
-00339047   _SciReportarErro
-00339052   _itoa
-003390b2   _InicializaPLL
-003390ce   _PLL
-00339166   _SpiA_Configura
-00339181   _InitMcbspaGpio
-00339197   _init_mcbsp_spi
-003391d5   _McBsp_DAC
-00339205   FS$$DIV
-0033928d   _InitCpuTimers
-003392ce   _ConfigCpuTimer
-00339309   _sin
-00339364   _cpu_timer0_isr
-0033939b   _epwm2_isr
-003393a8   _epwm3_isr
-003393b5   _xInt_ConfiguraIO
-003393cd   _xInt_Configura
-003393fd   _c_int00
-00339443   _RMS_Inicializar
-00339447   _RMS_Inicializar_Estrutura
-0033947b   _spiTxFifoIsr
-0033948c   _spiRxFifoIsr
-003394b1   _InitPieCtrl
-003394d0   _EnableInterrupts
-003394d9   _InitSpi
-003394da   _InitSpiGpio
-003394dd   _InitSpiaGpio
-003394fb   I$$DIV
-0033950c   I$$MOD
-0033951d   _InitPieVectTable
-0033953e   _sqrt
-0033955e   __args_main
-00339577   C$$EXIT
-00339577   _abort
-00339579   _exit
-00339590   _MemCopy
-003395a5   _xInt3_isr
-003395b6   _InitAdc
-003395c5   _strlen
-003395cf   __register_unlock
-003395d3   __register_lock
-003395d7   __nop
-003395e0   _PieVectTableInit
-003395e0   ___etext__
-003395e0   etext
-00339738   ___cinit__
-00339738   cinit
+0033887d   _Configura_EPwm5
+0033889f   _Configura_EPwm6
+003388c1   _Configura_GPIO
+003389a3   _Dog_Configura
+003389b3   _Dog_Reset
+003389bd   _Configura_ADC
+003389dd   _Ajusta_OffSet
+00338a20   _SktUpdate
+00338a6b   _Parar_Solda
+00338a6e   _Iniciar_Solda
+00338a71   _Inicializa_Variaveis
+00338b13   _set_mux_corrente
+00338b5d   _MaquinaEstadoDetecaoRogowiski
+00338bc5   _DetecaoRogowiski
+00338bd2   _OrdenaPontos
+00338c3a   _EscolherPontos
+00338d05   _InicializarVariaveis
+00338d31   LL$$DIV
+00338d6d   LL$$MOD
+00338da7   ULL$$DIV
+00338dd6   ULL$$MOD
+00338e38   _InitSysCtrl
+00338e41   _ServiceDog
+00338e4b   _DisableDog
+00338e53   _InitPll
+00338ea1   _InitPeripheralClocks
+00338ef9   _CsmUnlock
+00338f2a   _InitEPwm
+00338f2b   _InitEPwmGpio
+00338f38   _InitEPwm1Gpio
+00338f4a   _InitEPwm2Gpio
+00338f5c   _InitEPwm3Gpio
+00338f70   _InitEPwm4Gpio
+00338f84   _InitEPwm5Gpio
+00338f96   _InitEPwm6Gpio
+00338fa8   _InitEPwmSyncGpio
+00338fbc   _InitTzGpio
+00338ff2   _Configura_SciA
+00339013   _SciA_Receber
+0033901c   _SciA_SendMsg
+00339031   _Reportar_Erro_Ilegal
+0033903e   _DevolveACK
+00339049   _SciReportarErro
+00339054   _itoa
+003390b4   _InicializaPLL
+003390d0   _PLL
+00339168   _SpiA_Configura
+00339183   _InitMcbspaGpio
+00339199   _init_mcbsp_spi
+003391d7   _McBsp_DAC
+00339207   FS$$DIV
+0033928f   _InitCpuTimers
+003392d0   _ConfigCpuTimer
+0033930b   _sin
+00339366   _cpu_timer0_isr
+0033939d   _epwm2_isr
+003393aa   _epwm3_isr
+003393b7   _xInt_ConfiguraIO
+003393cf   _xInt_Configura
+003393ff   _c_int00
+00339445   _RMS_Inicializar
+00339449   _RMS_Inicializar_Estrutura
+0033947d   _spiTxFifoIsr
+0033948e   _spiRxFifoIsr
+003394b3   _InitPieCtrl
+003394d2   _EnableInterrupts
+003394db   _InitSpi
+003394dc   _InitSpiGpio
+003394df   _InitSpiaGpio
+003394fd   I$$DIV
+0033950e   I$$MOD
+0033951f   _InitPieVectTable
+00339540   _sqrt
+00339560   __args_main
+00339579   C$$EXIT
+00339579   _abort
+0033957b   _exit
+00339592   _MemCopy
+003395a7   _xInt3_isr
+003395b8   _InitAdc
+003395c7   _strlen
+003395d1   __register_unlock
+003395d5   __register_lock
+003395d9   __nop
+003395e2   _PieVectTableInit
+003395e2   ___etext__
+003395e2   etext
+0033973a   ___cinit__
+0033973a   cinit
 0033fff6   code_start
 0033fff8   _CsmPwl
 00380080   _ADC_cal

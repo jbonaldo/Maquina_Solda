@@ -308,8 +308,9 @@ interrupt void epwm1_isr(void)
 		{
 			//Alpha ~= 189 graus
 			EPwm1Regs.CMPA.half.CMPA =  Controle_SCRs.ticks_min;
-			EPwm4Regs.AQCTLA.bit.ZRO = AQ_CLEAR;      //Desabilita ePWM4  // Retirar pulsos do SCR
-			//EPwm4Regs.AQCTLA.bit.PRD = AQ_SET;
+			//EPwm4Regs.AQCTLA.bit.PRD = AQ_CLEAR;      //Desabilita ePWM4  // Retirar pulsos do SCR
+			EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;      //Desabilita ePWM4  // Retirar pulsos do SCR
+			EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;
 			GpioDataRegs.GPADAT.bit.GPIO15 = 0;
 		}
 	
@@ -329,7 +330,7 @@ interrupt void epwm1_isr(void)
 				LIBERA_INTEGRADOR;   //Termina reset (integrador volta a operar)
 				//Gera pulsos para fase1
 				EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;      //Habilita ePWM4
-//				EPwm4Regs.AQCTLA.bit.PRD = AQ_CLEAR;
+				EPwm4Regs.AQCTLA.bit.CAU = AQ_CLEAR;
 				EPwm4Regs.TBCTR = 0x0000;
 			}
 
@@ -497,7 +498,7 @@ void Configura_EPwm4()
    EPwm4Regs.TBPRD = 125;                         // Set timer period = 100Mhz/160/5kHz (se deseja freq de 5KHz)
    EPwm4Regs.TBPHS.half.TBPHS = 0x0000;           // Phase is 0
    EPwm4Regs.TBCTR = 0x0000;                      // Clear counter
-   EPwm4Regs.CMPA.half.CMPA = 16;                 //Duty_Cicle
+   EPwm4Regs.CMPA.half.CMPA = 100;                 //Duty_Cicle
 
    // Setup TBCLK
    EPwm4Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP; 		// Count up
@@ -507,11 +508,11 @@ void Configura_EPwm4()
    EPwm4Regs.TBCTL.bit.SYNCOSEL = TB_DISABLE;       // Desativa sincronismo externo ou por software
     
    // Set actions
-   EPwm4Regs.AQCTLA.bit.ZRO = AQ_CLEAR;   //Inicia desabilitado AQ_SET;             // Set PWM1A on Zero
-   EPwm4Regs.AQCTLA.bit.CAU = AQ_CLEAR;
-   //EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;   //Inicia desabilitado AQ_SET;             // Set PWM1A on Zero
-//   EPwm4Regs.AQCTLA.bit.PRD = AQ_SET;
-//   EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;
+//   EPwm4Regs.AQCTLA.bit.ZRO = AQ_CLEAR;   //Inicia desabilitado AQ_SET;             // Set PWM1A on Zero
+//   EPwm4Regs.AQCTLA.bit.CAU = AQ_CLEAR;
+     EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;   //Inicia desabilitado AQ_SET;             // Set PWM1A on Zero
+     EPwm4Regs.AQCTLA.bit.PRD = AQ_NO_ACTION;
+     EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;
 }
 
 /**
