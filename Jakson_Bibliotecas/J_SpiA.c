@@ -24,17 +24,28 @@ void SpiA_Configura()
 	InitSpiaGpio();
    SpiaRegs.SPICCR.bit.SPISWRESET=0; // Reset SPI
 									 //0-3            4           6
-   SpiaRegs.SPICCR.all=0x000E;       //No. bits = 15; Loopback=0; Polaridade=0;
+   SpiaRegs.SPICCR.all=0x000F;       //No. bits = 15; Loopback=0; Polaridade=0;
+   //SpiaRegs.SPICCR.all=0x004F;       //No. bits = 15; Loopback=0; Polaridade=1;
+   //SpiaRegs.SPICCR.all=0x000F;       //No. bits = 15; Loopback=0; Polaridade=0;
 									 //0			  1							2						3			 4			 
-   SpiaRegs.SPICTL.all=0x0006;       //Hablita int=1; habi transmisao (Talk=1); Master/Slave=1(Master); clk Phase=0; Overrum int = 0 (desab);
+   //SpiaRegs.SPICTL.all=0x0006;       //Hablita int=1; habi transmisao (Talk=1); Master/Slave=1(Master); clk Phase=0; Overrum int = 0 (desab);
+   SpiaRegs.SPICTL.all=0x000E;       //Hablita int=1; habi transmisao (Talk=1); Master/Slave=1(Master); clk Phase=1; Overrum int = 0 (desab);
+   
+   //clk Phase=0; Polaridade=0
+   //Rising Edge Without Delay. The SPI transmits data on the rising edge of the SPICLK signal and
+   //receives data on the falling edge of the SPICLK signal.
+   
+   //clk Phase=1; Polaridade=0
+   //Rising Edge With Delay. The SPI transmits data one half-cycle ahead of the rising edge of the SPICLK
+   //signal and receives data on the rising edge of the SPICLK signal.
 
    SpiaRegs.SPISTS.all=0x0000;
 									 
-   SpiaRegs.SPIBRR=8;           	 //BaudRate = LSPCLK/(SPIBRR+1); SPIBRR >= 3;
+   SpiaRegs.SPIBRR=0x18;           	 //BaudRate = LSPCLK/(SPIBRR+1); SPIBRR >= 3;
 									 //0-4					  5					   13				   15
    SpiaRegs.SPIFFTX.all=0xC040;      //Profundidade TxFifo=2; TxFifo_int = 1(hab); TxFifo funcionando; reseta SPI;
 									 //0-4					   5						6
-   SpiaRegs.SPIFFRX.all=0x007F;      //Profundidade RxFifo=16; RxFifo_int = 1(hab); 	Clear RXFFINT flag = 1			   //P.RxFifo=32 para evitar interrupcoes
+   SpiaRegs.SPIFFRX.all=0x0071;      //Profundidade RxFifo=16; RxFifo_int = 1(hab); 	Clear RXFFINT flag = 1			   //P.RxFifo=32 para evitar interrupcoes
 									 
    SpiaRegs.SPIFFCT.all=0x00;		 //Delay entre transmissoes da TxFifo (em ciclos SPI)
    SpiaRegs.SPIPRI.all=0x0010;		 //Acao quando o progrma é interrompido pelo emulador
@@ -98,12 +109,15 @@ Uint16 SpiA_AquisicaoCorrente()
 	//Amostra a corrente
 	//SpiaRegs.SPICCR.bit.SPICHAR = 0x0E;		  //No. de bits (15 bits)
 
-	portA->GPIO19 = 0;						  //Inicia conversao
+	//portA->GPIO19 = 0;						  //Inicia conversao
+	CONV_CORRENTE_INICIAR;
 	SpiaRegs.SPITXBUF = 0xFF;				  //Fornce os pulsos de clock
 	while(SpiaRegs.SPIFFRX.bit.RXFFST != 1);  //Espera até o dado ser recebido
-	portA->GPIO19 = 1;						  //Termina conversao
-	valorCorrente = (SpiaRegs.SPIRXBUF >> 1);				  //Le o dado da porta SPI
-	valorCorrente &= 0x0FFF;    //Elimina bits indesejados (importante sao os LSB)
+	//portA->GPIO19 = 1;						  //Termina conversao
+	CONV_CORRENTE_TERMINAR;
+	valorCorrente = SpiaRegs.SPIRXBUF;				  //Le o dado da porta SPI
+	//valorCorrente = SpiaRegs.SPIRXBUF ;				  //Le o dado da porta SPI
+	valorCorrente = 0x0FFF & (valorCorrente >> 2);    //Elimina bits indesejados (importante sao os LSB)
 
 	return  valorCorrente;
 }
@@ -111,14 +125,21 @@ Uint16 SpiA_AquisicaoCorrente()
 #pragma CODE_SECTION(SpiA_AquisicaoTensao, "ramfuncs");
 Uint16 SpiA_AquisicaoTensao()
 {
+	
 	Uint16 valorTensao = 0;
+	
 	//Amostra a Tensao
 	portA->GPIO27 = 0;						  //Inicia conversao
 	SpiaRegs.SPITXBUF = 0xFF;				  //Fornce os pulsos de clock
 	while(SpiaRegs.SPIFFRX.bit.RXFFST != 1);  //Espera até o dado ser recebido
 	portA->GPIO27 = 1;
-	valorTensao = (SpiaRegs.SPIRXBUF >> 1);				  //Le o dado da porta SPI
+	valorTensao = (SpiaRegs.SPIRXBUF >> 2);				  //Le o dado da porta SPI
+//	valorTensao = SpiaRegs.SPIRXBUF;				  //Le o dado da porta SPI
 	valorTensao &= 0x0FFF;    //Elimina bits indesejados (importante sao os LSB)
+	
+	//debug para verificar se os pulsos estao ok (o erro pode ser devido a detecao de zero do pll)
+	//valorTensao = 0;
+	
 
 	return  valorTensao;
 }

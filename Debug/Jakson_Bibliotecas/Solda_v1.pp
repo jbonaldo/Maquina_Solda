@@ -35,6 +35,7 @@ C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Solda_v1.obj: C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Solda_v1.obj: ../Jakson_Bibliotecas/Modo_KIR.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Solda_v1.obj: ../Jakson_Bibliotecas/Solda.h
+C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Solda_v1.obj: ../Jakson_Bibliotecas/Comandos.h
 
 ../Jakson_Bibliotecas/Solda_v1.c: 
 E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_Device.h: 
@@ -71,3 +72,4 @@ C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlib.h
 C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.h: 
 ../Jakson_Bibliotecas/Modo_KIR.h: 
 ../Jakson_Bibliotecas/Solda.h: 
+../Jakson_Bibliotecas/Comandos.h: 

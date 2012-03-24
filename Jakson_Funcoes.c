@@ -12,11 +12,11 @@
 
 Uint16 PerAmostragem = PER_AMOSTRAGEM;		//100Mhz/4/Freq_Amostr.
 #ifdef CRISTAL_20MHZ
-Uint16 Per120Hz = 52083 + 100;		//Set timer period = 100Mhz/1/16/120Hz (se deseja freq de 120Hz)
+Uint16 Per120Hz = 52083;		//Set timer period = 100Mhz/1/16/120Hz (se deseja freq de 120Hz)
 Uint16 PerTremPulsos = 125;
 Uint16 HalfPerDAC_PWM = 2314 / 2;   // Set timer period = 100Mhz/1/1/43200kHz (se deseja freq de 43200KHz = FreqAmostragem
 #else
-Uint16 Per120Hz = 39063 + 100;		//Set timer period = 100Mhz/2/16/120Hz (se deseja freq de 120Hz)
+Uint16 Per120Hz = 39063;		//Set timer period = 100Mhz/2/16/120Hz (se deseja freq de 120Hz)
 Uint16 PerTremPulsos = 188;
 Uint16 HalfPerDAC_PWM = 3472 / 2;   // Set timer period = 150Mhz/1/1/43200kHz (se deseja freq de 43200KHz = FreqAmostragem)
 #endif
@@ -117,7 +117,7 @@ void AquisitaCanal_1()
 #define ALPHA_MIM	            30	//em graus -> corresponde à máxima corrente
 #define ALPHA_MAX	            150	//em graus -> corresponde à mínima corrente
 #define ALPHA_RANGE	            (ALPHA_MAX - ALPHA_MIM)	//Os graus válidos estao entre ALPHA_MIM e ALPHA_MAX
-#define GRAUS_ANTES_ZERO_CROSS	5	//Número de graus até o próximo cruzamento por zero, que ocorre em 180 graus.
+#define GRAUS_ANTES_ZERO_CROSS	10	//Número de graus até o próximo cruzamento por zero, que ocorre em 180 graus.
 void SktUpdate(Uint16 skt)
 {
 	Uint16 temp;
@@ -285,16 +285,16 @@ void Inicializa_Variaveis()
 
 	//Valores de teste
 	Solda.pausaPrincipal.total_semiciclos = 2;
-	Solda.principal.total_impulsos = 3;
-	Solda.principal.total_semiciclos = 4;
+	Solda.principal.total_impulsos = 1;
+	Solda.principal.total_semiciclos = 10;
 	Solda.principal.skt = 100;
-	Solda.subida.total_semiciclos = 4;
-	Solda.descida.total_semiciclos = 4;
-	Solda.preSolda.total_semiciclos = 4;
+	Solda.subida.total_semiciclos = 0;
+	Solda.descida.total_semiciclos = 0;
+	Solda.preSolda.total_semiciclos = 0;
 	Solda.preSolda.skt = 300;
-	Solda.posSolda.total_semiciclos = 4;
+	Solda.posSolda.total_semiciclos = 0;
 	Solda.posSolda.skt = 300;
-	Solda.pausa1.total_semiciclos = 2;
+	Solda.pausa1.total_semiciclos = 0;
 	Solda.pausa2.total_semiciclos = 2;
 	
 	//Fim valores de teste
@@ -362,7 +362,7 @@ void set_mux_corrente(unsigned int in)
 */
 //Se a tensao for maior que 500mV a bobina está ausente	
 //se a tensao for menor que 100mV a bobina está presente	
-#define LIMIAR_SUPERIOR_BOBINA	200		//500mV;  2048 = 5V => 500mV = 204 .:. limiar+ = 2048 * 0.5V / 5V = 204; 		
+#define LIMIAR_SUPERIOR_BOBINA	600		//500mV;  2048 = 5V => 500mV = 204 .:. limiar+ = 2048 * 0.5V / 5V = 204; 		
 #define LIMIAR_INFERIOR_BOBINA	100		//100mV;  2048 = 5V => 100mV = 40  .:. limiar- = 2048 * 0.1 / 5V
 
 void MaquinaEstadoDetecaoRogowiski(Uint16 valorIn)

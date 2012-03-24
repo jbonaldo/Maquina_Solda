@@ -2,6 +2,7 @@
 #include "DSP2833x_Examples.h"   // Examples Include File  
 #include "Jakson_Prototipos_Funcoes.h"  //Prototipo das funcoes programadas pelo usuário
 #include "Solda.h"
+#include "Comandos.h"
 
 #define ATIVO		0x01
 #define TERMINADO	0x00
@@ -199,8 +200,8 @@ Uint16 RampaSubida()
 		return TERMINADO;
 	}
 
-	Solda.subida.estado = TERMINADO;
-	return TERMINADO;
+	//Solda.subida.estado = TERMINADO;
+	//return TERMINADO;
 }
 
 //#pragma CODE_SECTION(RampaDescida, "ramfuncs");
@@ -230,8 +231,8 @@ Uint16 RampaDescida()
 		return TERMINADO;
 	}
 
-	Solda.descida.estado = TERMINADO;
-	return TERMINADO;
+	//Solda.descida.estado = TERMINADO;
+	//return TERMINADO;
 }
 
 
@@ -256,8 +257,8 @@ Uint16 SoldaPrePos(struct _prepossolda *s)
 		return TERMINADO;
 	}
 
-	s->estado = TERMINADO;
-	return TERMINADO;	
+	//s->estado = TERMINADO;
+	//return TERMINADO;	
 }
 
 //#pragma CODE_SECTION(Pausa, "ramfuncs");
@@ -274,7 +275,7 @@ Uint16 Pausa(struct _pausa *p)
 	else
 		return TERMINADO;
 
-	return TERMINADO;
+	//return TERMINADO;
 }
 
 ////#pragma CODE_SECTION(SoldaImpulsos, "ramfuncs");
@@ -341,7 +342,7 @@ Uint16 SoldaImpulsos()
 void SoldaContinua()
 {
 	static Uint16 cont = 0;
-	union long2float tmp;
+	float corrente;
 
 	SetaSkt(Solda.principal.skt);	//Garante um skt valido para a solda principal
 									//se o modo for KIR este valor setado é ignorado
@@ -352,9 +353,9 @@ void SoldaContinua()
 	if(cont > 20) {
 		cont = 0;
 		Solda.principal.cont_semiciclos = 0;
-		tmp.nFloat = (Solda.principal.iRmsMedia[0] / 10);
+		corrente = (Solda.principal.iRmsMedia[0] / 10);
 	//	InicializarParametrosSolda();
-		SciA_Enviar_Pacote(0x55, tmp);    //Envia o valor da corrente de solda
+		comandos_enviar_corrente(corrente);		//Envia o valor da corrente de solda
 
 	}
 	
@@ -492,7 +493,7 @@ float CalcularMediaRms()
 //#pragma CODE_SECTION(GerenciarSolda, "ramfuncs");
 void GerenciarSolda()
 {
-	union long2float tmp;
+	float corrente;
 
 	if(FlagSoldar  &&  FlagEmergencia==0  ) {
 		FlagSoldar = 0;
@@ -501,10 +502,10 @@ void GerenciarSolda()
 
 	if(FlagSoldaConcluida) {
 		FlagSoldaConcluida = 0;
-		tmp.nFloat = CalcularMediaRms();	//Calcula o valor RMS médio durante a soldagem
+		corrente = CalcularMediaRms();	//Calcula o valor RMS médio durante a soldagem
 		//GpioDataRegs.GPBTOGGLE.bit.GPIO32 = 1;		
 		//tmp.nFloat = Adc_offset[0];
-		SciA_Enviar_Pacote(0x55, tmp);    //Envia o valor da corrente de solda para a gerencia
+		comandos_enviar_corrente(corrente);
 	//	GpioDataRegs.GPBTOGGLE.bit.GPIO32 = 1;
 		Fim_pacote = 1;		
 		if(Solda.tipo==COSTURA  ||  Solda.tipo==CONTINUA) {
@@ -515,7 +516,7 @@ void GerenciarSolda()
 		}
 		/////////// Gera os pontos de referencia para o KIR//////////////////////
 		//Modo configuracao de kir.  Só funciona se a solda for individual
-		if( (Solda.principal.modo == 2) && (Solda.tipo = INDIVIDUAL) )	
+		if( (Solda.principal.modo == 2) && (Solda.tipo == INDIVIDUAL) )	
 		{
 			Kir.fDummySkt = Solda.principal.skt;
 			Kir.i_rms = Solda.principal.iMediaImpulsos;  

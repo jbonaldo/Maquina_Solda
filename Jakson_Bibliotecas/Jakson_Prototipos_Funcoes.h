@@ -80,6 +80,11 @@ extern struct _disparo_corte_scr Controle_SCRs;
 #define	PIN_ATIVO		1
 //#define	PARAR		0
 
+#define CONV_CORRENTE_INICIAR        GpioDataRegs.GPACLEAR.bit.GPIO19 = 1
+#define CONV_CORRENTE_TERMINAR       GpioDataRegs.GPASET.bit.GPIO19 = 1
+#define CONV_TENSAO_INICIAR          GpioDataRegs.GPACLEAR.bit.GPIO27 = 1
+#define CONV_TENSAO_TERMINAR         GpioDataRegs.GPASET.bit.GPIO27 = 1
+
 #define INDIVIDUAL	0x01
 #define SERIE		0x02
 #define COSTURA		0x03

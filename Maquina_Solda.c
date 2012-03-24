@@ -1,7 +1,7 @@
 #include "DSP28x_Project.h"     // Device Headerfile and Examples Include File
 #include "Jakson_Bibliotecas/Solda.h"
 #include "Jakson_Bibliotecas/Jakson_Prototipos_Funcoes.h"  //Prototipo das funcoes programadas pelo usuário
-
+#include "Jakson_Bibliotecas/Comandos.h" 
 
 
 #pragma CODE_SECTION(spiTxFifoIsr, "ramfuncs");
@@ -36,19 +36,7 @@ void Ajusta_OffSet();
 void Configura_ADC();
 
 
-union _bytefloat {
-	unsigned long num_float;
-	char  num_4bytes[4];
-};
-
-/*union long2float {
-	float nFloat;
-	unsigned long unLong;
-};
-*/
-union long2float f2l;
-
-
+int debug_inicia_solda = 0;
 
 extern Uint16 ADC_OffSet;
 extern Uint16 PerAmostragem;
@@ -62,7 +50,7 @@ extern void itoa(int n, char s[]);
 char sTemp[15];
 Uint16 i;
 
-union _bytefloat Buffer1;
+//union _bytefloat Buffer1;
 //unsigned long jtmp = 0;
 float jfloat;
 
@@ -73,14 +61,7 @@ float CorrenteSkt[30];   //debeug
 unsigned int k_ciclos = 0, Namostras[30];	 			//debug
 #endif
 
-/*
-union _bytefloat {
-	float num_float;
-	char  num_4bytes[4];
-};
 
-union _bytefloat Buffer, Buffer2;
-*/
 
 void main(void)
 {
@@ -139,8 +120,8 @@ void main(void)
 //	Configura_ADC();
 
 	//Move as funcoes (marcadas com #pragma) da Flash para a RAM     
-	MemCopy(&RamfuncsLoadStart, &RamfuncsLoadEnd, &RamfuncsRunStart);
-	InitFlash();
+//	MemCopy(&RamfuncsLoadStart, &RamfuncsLoadEnd, &RamfuncsRunStart);
+//	InitFlash();
 
    Configura_EPwm1();
    Configura_EPwm2();
@@ -215,36 +196,16 @@ void main(void)
 
 
 	//Dog_Configura();
-/*
-	Kir.vet_skt[0] = 800.0;
-	Kir.vet_kA[0] = 8.0;
-
-	Kir.vet_skt[1] = 120.0;
-	Kir.vet_kA[1] = 1.2;
-
-	Kir.vet_skt[2] = 195.0;
-	Kir.vet_kA[2] = 1.95;
-
-	Kir.vet_skt[3] = 0.0;
-	Kir.vet_kA[3] = 0.0;
-
-	Kir.vet_skt[4] = 500;
-	Kir.vet_kA[4] = 5.0;
-
-	Kir.i_ref = 7.0;
-
-*/
-
-/*
-	jfloat = 100.25;
-	f2l.nFloat = jfloat;
-
-	Buffer1.num_4bytes[0] = (f2l.unLong & 0x000000FF);
-	Buffer1.num_4bytes[1] = (f2l.unLong & 0x0000FF00) >> 8;
-	Buffer1.num_4bytes[2] = (f2l.unLong & 0x00FF0000) >> 16;
-	Buffer1.num_4bytes[3] = (f2l.unLong & 0xFF000000) >> 24;
-
-*/
+	
+	PinoDetecaoRogowiski_ligaFonteC;
+	RESETA_INTEGRADOR;
+	LIBERA_INTEGRADOR;
+	RESETA_INTEGRADOR;
+	
+	PinoDetecaoRogowiski_deslFonteC;
+	RESETA_INTEGRADOR;
+	LIBERA_INTEGRADOR;
+	RESETA_INTEGRADOR;
 
 	DetecaoRogowiski();
 
@@ -255,6 +216,12 @@ void main(void)
 		//SciA_Comandos_Hiperterminal();	//Usa o Hyperterminal
 		GerenciarSolda();
         RecebePacote();
+        if(debug_inicia_solda)
+        {
+        	SetaSkt(Solda.principal.skt);	
+        	debug_inicia_solda = 0;
+        	Comandos(SOLDAR, 0);
+        }
 	}
 
 
@@ -276,6 +243,8 @@ interrupt void cpu_timer0_isr(void)
 //Timer que gera o angulo de disparo dos tiristores
 interrupt void epwm1_isr(void)
 {	
+	TogglePinoDetectaZero_errado = 1;
+	
 	EINT;	//Permite q esta interrup seja interrompida
 				//qdo esta interrup terminar, 
 				//INTM voltará para o estado antigo
@@ -311,7 +280,7 @@ interrupt void epwm1_isr(void)
 			//EPwm4Regs.AQCTLA.bit.PRD = AQ_CLEAR;      //Desabilita ePWM4  // Retirar pulsos do SCR
 			EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;      //Desabilita ePWM4  // Retirar pulsos do SCR
 			EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;
-			GpioDataRegs.GPADAT.bit.GPIO15 = 0;
+			//GpioDataRegs.GPADAT.bit.GPIO15 = 0;
 		}
 	
 		if( (EPwm1Regs.TBCTR) < Controle_SCRs.ticks_corta_pulsos)
@@ -406,7 +375,7 @@ interrupt void epwm3_isr(void)
 void Configura_EPwm1()
 {
    //Pulsos de disparo do SCR  Fase A	
-   EPwm1Regs.TBPRD = Per120Hz;              // Set timer period = 100Mhz/16/120Hz (se deseja freq de 120Hz)
+   EPwm1Regs.TBPRD = Per120Hz + 500;              // Set timer period = 100Mhz/16/120Hz (se deseja freq de 120Hz)
    EPwm1Regs.TBPHS.half.TBPHS = 0x0000;           // Phase is 0
    EPwm1Regs.TBCTR = 0x0000;                      // Clear counter
    EPwm1Regs.CMPA.half.CMPA = Per120Hz/2;			      //Duty_Cicle
@@ -498,7 +467,7 @@ void Configura_EPwm4()
    EPwm4Regs.TBPRD = 125;                         // Set timer period = 100Mhz/160/5kHz (se deseja freq de 5KHz)
    EPwm4Regs.TBPHS.half.TBPHS = 0x0000;           // Phase is 0
    EPwm4Regs.TBCTR = 0x0000;                      // Clear counter
-   EPwm4Regs.CMPA.half.CMPA = 100;                 //Duty_Cicle
+   EPwm4Regs.CMPA.half.CMPA = 75;                 //Duty_Cicle
 
    // Setup TBCLK
    EPwm4Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP; 		// Count up

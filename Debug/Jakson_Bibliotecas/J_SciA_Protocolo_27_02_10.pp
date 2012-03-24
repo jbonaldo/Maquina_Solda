@@ -1,6 +1,7 @@
 # FIXED
 
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: ../Jakson_Bibliotecas/J_SciA_Protocolo_27_02_10.c
+C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: ../Jakson_Bibliotecas/Comandos.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_Device.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_Adc.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_DevEmu.h
@@ -34,12 +35,12 @@ C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlib.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: ../Jakson_Bibliotecas/Modo_KIR.h
-C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: ../Jakson_Bibliotecas/Solda.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/string.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlib.h
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/J_SciA_Protocolo_27_02_10.obj: C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.h
 
 ../Jakson_Bibliotecas/J_SciA_Protocolo_27_02_10.c: 
+../Jakson_Bibliotecas/Comandos.h: 
 E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_Device.h: 
 E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_Adc.h: 
 E:/TexasInstruments/C2000/workspace/DSP_Maquina_Solda/DSP2833x_headers/include/DSP2833x_DevEmu.h: 
@@ -73,7 +74,6 @@ C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.
 C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlib.h: 
 C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.h: 
 ../Jakson_Bibliotecas/Modo_KIR.h: 
-../Jakson_Bibliotecas/Solda.h: 
 C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/string.h: 
 C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlib.h: 
 C:/Program\ Files/Texas\ Instruments/ccsv4/tools/compiler/c2000/include/stdlibf.h: 

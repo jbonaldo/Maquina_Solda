@@ -13,7 +13,7 @@ float Saida = 0;
 
 
 #pragma CODE_SECTION(Calcular, "ramfuncs");
-Calcular(struct _kir *kir)
+void Calcular(struct _kir *kir)
 {
 	float a1, a2, a3;
 	float b1, b2, b3;
