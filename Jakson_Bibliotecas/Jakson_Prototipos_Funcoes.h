@@ -51,7 +51,7 @@ extern struct _disparo_corte_scr Controle_SCRs;
 #define FREQ_AMOSTRAGEM 25000 	// aprox: 120Hz * 208 pontos
 
 
-#define CORRENTE_FUNDO_ESCALA   (20.0 * 4.0)	//fundo escala correspondente a entrada do Mux com menor ganho
+#define CORRENTE_FUNDO_ESCALA   (25.0)	//fundo escala correspondente a entrada do Mux com menor ganho
 #define TENSAO_FUNDO_ESCALA     1.0
 
 

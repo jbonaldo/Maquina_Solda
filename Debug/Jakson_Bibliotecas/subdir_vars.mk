@@ -12,7 +12,8 @@ C_SRCS += \
 ../Jakson_Bibliotecas/Modo_KIR.c \
 ../Jakson_Bibliotecas/PLL.c \
 ../Jakson_Bibliotecas/Protocolo.c \
-../Jakson_Bibliotecas/Solda_v1.c 
+../Jakson_Bibliotecas/Solda_v1.c \
+../Jakson_Bibliotecas/debug_spi.c 
 
 OBJS += \
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Comandos.obj \
@@ -23,7 +24,8 @@ C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Modo_KIR.obj \
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/PLL.obj \
 C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Protocolo.obj \
-C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Solda_v1.obj 
+C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Solda_v1.obj \
+C:/Documents\ and\ Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/debug_spi.obj 
 
 C_DEPS += \
 ./Jakson_Bibliotecas/Comandos.pp \
@@ -34,7 +36,8 @@ C_DEPS += \
 ./Jakson_Bibliotecas/Modo_KIR.pp \
 ./Jakson_Bibliotecas/PLL.pp \
 ./Jakson_Bibliotecas/Protocolo.pp \
-./Jakson_Bibliotecas/Solda_v1.pp 
+./Jakson_Bibliotecas/Solda_v1.pp \
+./Jakson_Bibliotecas/debug_spi.pp 
 
 C_DEPS__QTD += \
 ".\Jakson_Bibliotecas\Comandos.pp" \
@@ -45,7 +48,8 @@ C_DEPS__QTD += \
 ".\Jakson_Bibliotecas\Modo_KIR.pp" \
 ".\Jakson_Bibliotecas\PLL.pp" \
 ".\Jakson_Bibliotecas\Protocolo.pp" \
-".\Jakson_Bibliotecas\Solda_v1.pp" 
+".\Jakson_Bibliotecas\Solda_v1.pp" \
+".\Jakson_Bibliotecas\debug_spi.pp" 
 
 OBJS__QTD += \
 "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Comandos.obj" \
@@ -56,7 +60,8 @@ OBJS__QTD += \
 "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Modo_KIR.obj" \
 "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\PLL.obj" \
 "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Protocolo.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Solda_v1.obj" 
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Solda_v1.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\debug_spi.obj" 
 
 C_SRCS_QUOTED += \
 "../Jakson_Bibliotecas/Comandos.c" \
@@ -67,6 +72,7 @@ C_SRCS_QUOTED += \
 "../Jakson_Bibliotecas/Modo_KIR.c" \
 "../Jakson_Bibliotecas/PLL.c" \
 "../Jakson_Bibliotecas/Protocolo.c" \
-"../Jakson_Bibliotecas/Solda_v1.c" 
+"../Jakson_Bibliotecas/Solda_v1.c" \
+"../Jakson_Bibliotecas/debug_spi.c" 
 
 

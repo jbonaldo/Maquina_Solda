@@ -35,7 +35,9 @@ float PLL(float tensao)
 	const  float Ts = T_AMOSTRAGEM;	//Período de amostragem; 43KkHz
 	//const  float Ts = 0.0000153333;	//Período de amostragem; 43KkHz
 	const  float kp = 35.35;
+    //const  float kp = 20.0;
 	const  float ki = 1000;
+    //const  float ki = 600;
 	static unsigned int i = 0;
 	
 

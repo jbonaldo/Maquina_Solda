@@ -17,7 +17,7 @@ Uint16 HalfPerDAC_PWM = 2314 / 2;   // Set timer period = 100Mhz/1/1/43200kHz (s
 #else
 Uint16 Per120Hz = 39063;		//Set timer period = 100Mhz/2/16/120Hz (se deseja freq de 120Hz)
 Uint16 PerTremPulsos = 188;
-Uint16 HalfPerDAC_PWM = 3472 / 2;   // Set timer period = 150Mhz/1/1/43200kHz (se deseja freq de 43200KHz = FreqAmostragem)
+Uint16 HalfPerDAC_PWM = 1024 / 2;   // Set timer period = 150Mhz/1/1/43200kHz (se deseja freq de 43200KHz = FreqAmostragem)
 #endif
 
 //Uint16 Duty1A = 1000;
@@ -66,8 +66,9 @@ void AquisitaCanal_1()
 	Uint16 tempTensao;
 	Uint16 tempCorrente;
 	//SpiA_ConversaoAD(valor_amostrado);
+        tempCorrente = SpiA_AquisicaoCorrente();
 	tempTensao = SpiA_AquisicaoTensao();
-	tempCorrente = SpiA_AquisicaoCorrente();
+
 	corrente_pu = Const_ADC_corrente*((float)tempCorrente-Adc_offset[0]); //Vo=Vref/4096*(Vi-2047)
 
 	tensao_pu = Const_ADC_tensao*((float)tempTensao-Adc_offset[1]); //Vo=Vref/4096*(Vi-2047)
@@ -456,14 +457,15 @@ Uint16 DetecaoRogowiski()
  * deltaV_pu = 0.3 pu
  * 
  * 
- * Se deltaV_pu < 0.2 pu em t=2ms depois de acionada a fonte de corrente
+ * Se deltaV_pu < 0.25 pu em t=2ms depois de acionada a fonte de corrente
  * então a bobina está presente. 
  * 
- * Se deltaV_pu > 0.2 em t=2ms, a bobina está ausente
+ * Se deltaV_pu > 0.25 em t=2ms, a bobina está ausente
  */ 
 
-#define DELTA_V_PU_CRITICO  (0.2)
-int delay_us = 3000;
+#define DELTA_V_PU_CRITICO_REF  (0.7)
+float DELTA_V_PU_CRITICO = DELTA_V_PU_CRITICO_REF;
+int delay_us = 2000;
 Uint16 DetectaRogowiski(void)
 {
 #define N_AMOSTRAS	10	
@@ -507,15 +509,14 @@ Uint16 DetectaRogowiski(void)
 	if(deltaV_pu < DELTA_V_PU_CRITICO) {
 		GpioDataRegs.GPBDAT.bit.GPIO34 = 1;
 		FlagResultadoDetecaoBobina = 1;	//Bobina Presente
-		return 1;
 	} 
 	else {
 		GpioDataRegs.GPBDAT.bit.GPIO34 = 0;
 		//SciReportarErro(ERRO_AUSENCIA_BOBINA);		
 		FlagResultadoDetecaoBobina = 0;	//Bobina Ausente
-		return 0;
 	}	
 	
+    //FlagResultadoDetecaoBobina = 1; //Debug (mostra sempre a bobina como presente)
 	return FlagResultadoDetecaoBobina;
 }
 

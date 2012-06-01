@@ -1,7 +1,9 @@
 #include "DSP28x_Project.h"     // Device Headerfile and Examples Include File
 #include "Jakson_Bibliotecas/Solda.h"
 #include "Jakson_Bibliotecas/Jakson_Prototipos_Funcoes.h"  //Prototipo das funcoes programadas pelo usuário
-#include "Jakson_Bibliotecas/Comandos.h" 
+#include "Jakson_Bibliotecas/Comandos.h"
+
+#include "Jakson_Bibliotecas/debug_spi.h"  
 
 
 #pragma CODE_SECTION(spiTxFifoIsr, "ramfuncs");
@@ -132,6 +134,11 @@ void main(void)
 
    Desabilita_Pulsos();
 
+    ///////// Teste debug SPI /////////
+//    debug_spi_init();
+//    debug_spi_run();
+    ///////////////////////////////////
+    
    InitAdc();
    Ajusta_OffSet();
    Configura_ADC();
@@ -191,11 +198,17 @@ void main(void)
 //   PieCtrlRegs.PIEIER3.bit.INTx5 = 1;
 //   PieCtrlRegs.PIEIER3.bit.INTx6 = PWM6_INT_ENABLE;
 
+
+
+    
    EINT;   // Enable Global interrupt INTM
    ERTM;   // Enable Global realtime interrupt DBGM
 
 
 	//Dog_Configura();
+    
+
+    
 	
 	PinoDetecaoRogowiski_ligaFonteC;
 	RESETA_INTEGRADOR;
