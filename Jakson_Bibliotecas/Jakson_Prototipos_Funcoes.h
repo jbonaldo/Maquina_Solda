@@ -46,7 +46,12 @@ struct _disparo_corte_scr {
 extern struct _disparo_corte_scr Controle_SCRs;
 
 
-#define CORRENTE_FUNDO_ESCALA   20.0	//fundo escala correspondente a entrada do Mux com menor ganho
+#define T_AMOSTRAGEM_US	40
+#define T_AMOSTRAGEM    40e-6;
+#define FREQ_AMOSTRAGEM 25000 	// aprox: 120Hz * 208 pontos
+
+
+#define CORRENTE_FUNDO_ESCALA   (20.0 * 4.0)	//fundo escala correspondente a entrada do Mux com menor ganho
 #define TENSAO_FUNDO_ESCALA     1.0
 
 
@@ -85,6 +90,11 @@ extern struct _disparo_corte_scr Controle_SCRs;
 #define CONV_TENSAO_INICIAR          GpioDataRegs.GPACLEAR.bit.GPIO27 = 1
 #define CONV_TENSAO_TERMINAR         GpioDataRegs.GPASET.bit.GPIO27 = 1
 
+
+#define DEBUG_GPIO12	GpioDataRegs.GPADAT.bit.GPIO12
+#define DEBUG_GPIO13	GpioDataRegs.GPADAT.bit.GPIO13
+#define DEBUG_GPIO14	GpioDataRegs.GPADAT.bit.GPIO14	
+
 #define INDIVIDUAL	0x01
 #define SERIE		0x02
 #define COSTURA		0x03
@@ -99,6 +109,7 @@ extern struct _disparo_corte_scr Controle_SCRs;
 //#define CRISTAL_20MHZ	//Se o crista da placa do DSP for de 30 MHz, comentar esta linha
 
 Uint16 DetecaoRogowiski();
+Uint16 DetectaRogowiski(void);
 extern void AquisitaCanal_1();
 void SetaSkt(Uint16 skt);
 void SktUpdate(Uint16 skt);
@@ -112,6 +123,8 @@ void DetecaoZeroPLL();
 void set_mux_corrente(unsigned int in);
 extern struct _compensacaoTensao CompensacaoTensao;
 
+void trem_pulsos_tiristor_acionar(void);
+void trem_pulsos_tiristor_remover(void);
 
 void Dog_Reset();
 

@@ -4,6 +4,7 @@
 */
 
 #include <math.h>
+#include "Jakson_Prototipos_Funcoes.h"
 
 #define NUM_AMOSTRAS	1000
 
@@ -31,7 +32,7 @@ float PLL(float tensao)
 	static float erro = 0;		//erro do produto escalar (produto escalar deve ser zero)
 	static float tensao_90_graus = 0;  //sinal de tensao defasado em 90 graus da tensao de entrada
 	static float teta = 0;
-	const  float Ts = 0.000023;	//Período de amostragem; 43KkHz
+	const  float Ts = T_AMOSTRAGEM;	//Período de amostragem; 43KkHz
 	//const  float Ts = 0.0000153333;	//Período de amostragem; 43KkHz
 	const  float kp = 35.35;
 	const  float ki = 1000;

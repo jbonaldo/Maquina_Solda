@@ -6,8 +6,7 @@
 
 ///#pragma CODE_SECTION(InitFlash, "ramfuncs");
 
-#define PER_AMOSTRAGEM 	2084
-#define FREQ_AMOSTRAGEM 43478 	// aprox: 120Hz * 360 pontos
+#define PER_AMOSTRAGEM 	2084 	//23us
 #define NUM_PI 3.141592
 
 Uint16 PerAmostragem = PER_AMOSTRAGEM;		//100Mhz/4/Freq_Amostr.
@@ -37,7 +36,7 @@ float Temp = 0;
 
 volatile Uint16 FlagDetectandoBobina = 0;
 Uint16 FlagResultadoDetecaoBobina = 0;
-void MaquinaEstadoDetecaoRogowiski(Uint16 valorIn);
+void MaquinaEstadoDetecaoRogowiski(float valorIn);
 
 struct _disparo_corte_scr Controle_SCRs;
 
@@ -52,7 +51,15 @@ Uint16 Alpha_LiMin;
 float temp_dac = 0;
 Uint16 ii = 0;
 
-//#pragma CODE_SECTION(AquisitaCanal_1, "ramfuncs");
+typedef struct {
+	int ticks;
+	int base_us;
+	int target;
+} ticks_t;
+
+ticks_t time_base = {0, T_AMOSTRAGEM_US, 0};
+
+#pragma CODE_SECTION(AquisitaCanal_1, "ramfuncs");
 void AquisitaCanal_1()
 {
 	static float seno1 = 0, seno2 = 0;
@@ -65,6 +72,8 @@ void AquisitaCanal_1()
 
 	tensao_pu = Const_ADC_tensao*((float)tempTensao-Adc_offset[1]); //Vo=Vref/4096*(Vi-2047)
 	temp_dac = corrente_pu/Const_ADC_corrente + 2048;
+	
+	time_base.ticks++;
 
 
 	
@@ -109,7 +118,7 @@ void AquisitaCanal_1()
 	//	portA->GPIO23 = 1;						  //Termina conversao
 	}	
 
-	MaquinaEstadoDetecaoRogowiski(tempCorrente);
+	//MaquinaEstadoDetecaoRogowiski(corrente_pu);
 }
 
 //#pragma CODE_SECTION(SetaSkt, "ramfuncs");
@@ -176,8 +185,7 @@ void Desabilita_Pulsos()
 {
 	EPwm1Regs.ETSEL.bit.INTEN = 0;		    // Disanable INT
 	EPwm1Regs.ETPS.bit.INTPRD = ET_DISABLE; // Nao gera mais interrupcoes
-	EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;    //Desabilita Pulsos FaseA (PWM4)
-	EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;      //Desabilita Pulsos FaseA (PWM4)
+	trem_pulsos_tiristor_remover();
 	//EPwm1Regs.AQCTLA.bit.CAU = AQ_CLEAR;    //Desabilita Pulsos FaseA (PWM1 dispara PWM4)
 /*
 	EPwm2Regs.ETSEL.bit.INTEN = 0;		    // Disanable INT
@@ -191,6 +199,21 @@ void Desabilita_Pulsos()
 	EPwm3Regs.AQCTLA.bit.CAU = AQ_CLEAR;    //Desabilita Pulsos FaseA (PWM1 dispara PWM4)
 */
 }
+
+//remove o trem de pulsos
+void trem_pulsos_tiristor_remover(void)
+{	
+	EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;    //Desabilita Pulsos FaseA (PWM4)
+    EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;    //Desabilita Pulsos FaseA (PWM4)
+}
+
+//insere o trem de pulsos para disparo dos tiristores
+void trem_pulsos_tiristor_acionar(void)
+{
+	EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;      //Habilita ePWM4
+	EPwm4Regs.AQCTLA.bit.CAU = AQ_CLEAR;
+}
+
 
 void Parar_Solda()
 {
@@ -209,14 +232,13 @@ void DetecaoZeroPLL()
 	TogglePinoDetectaZero = 1;	//mostra o instante em q ocorreu o sincronismo
 	TogglePinoDetectaZero_errado = 1;
 
-	//if(EPwm1Regs.TBCTR > 15000) 
-	//{
-		EPwm1Regs.ETCLR.bit.INT = 1;          	// Limpa os pedidos de interrupcao que por ventura estiverem pendentes 
-		EPwm2Regs.ETCLR.bit.INT = 1;          	// Limpa os pedidos de interrupcao que por ventura estiverem pendentes 
-		EPwm3Regs.ETCLR.bit.INT = 1;          	// Limpa os pedidos de interrupcao que por ventura estiverem pendentes 
-		PieCtrlRegs.PIEIFR3.bit.INTx1 = 0;
-		EPwm1Regs.TBCTL.bit.SWFSYNC = 1;		//Força sincronizacao do PWM1 (Zera o counter)
-	//}
+	EPwm1Regs.ETCLR.bit.INT = 1;          	// Limpa os pedidos de interrupcao que por ventura estiverem pendentes 
+	EPwm2Regs.ETCLR.bit.INT = 1;          	// Limpa os pedidos de interrupcao que por ventura estiverem pendentes 
+	EPwm3Regs.ETCLR.bit.INT = 1;          	// Limpa os pedidos de interrupcao que por ventura estiverem pendentes 
+	EPwm1Regs.TBCTL.bit.SWFSYNC = 1;		//Força sincronizacao do PWM1 (Zera o counter)
+		
+	trem_pulsos_tiristor_remover();	
+
 
 	Rms.Tensao.RMS120Hz(&Rms.Tensao);
 
@@ -232,8 +254,8 @@ void DetecaoZeroPLL()
 		Desabilita_Pulsos();
 		//GpioDataRegs.GPADAT.bit.GPIO25 = 0;  //Reseta Integrador
 
-		if(FlagDetectandoBobina == 0)
-			RESETA_INTEGRADOR;
+		//if(FlagDetectandoBobina == 0)
+		//	RESETA_INTEGRADOR;
 	}
 
 	
@@ -321,13 +343,14 @@ void set_mux_corrente(unsigned int in)
 {
 	switch( in )
 	{
-		case GANHO_CORRENTE_50_100_A:
+		case GANHO_CORRENTE_0_25_A:
 			PinMuxAnalogico_bit0_set;
-			PinMuxAnalogico_bit1_set;
-			PinMuxAnalogico_bit2_set;
+			PinMuxAnalogico_bit1_clear;
+			PinMuxAnalogico_bit2_set;		
 			Rms.FaseA.fator_escala = (float)CORRENTE_FUNDO_ESCALA * 1.0;
 			break;
-		
+			
+					
 		case GANHO_CORRENTE_25_50_A:
 			PinMuxAnalogico_bit0_clear;
 			PinMuxAnalogico_bit1_set;
@@ -335,12 +358,14 @@ void set_mux_corrente(unsigned int in)
 			Rms.FaseA.fator_escala = (float)CORRENTE_FUNDO_ESCALA * 2.0;
 			break;
 		
-		case GANHO_CORRENTE_0_25_A:
+
+		case GANHO_CORRENTE_50_100_A:
 			PinMuxAnalogico_bit0_set;
-			PinMuxAnalogico_bit1_clear;
-			PinMuxAnalogico_bit2_set;		
+			PinMuxAnalogico_bit1_set;
+			PinMuxAnalogico_bit2_set;
 			Rms.FaseA.fator_escala = (float)CORRENTE_FUNDO_ESCALA * 4.0;
 			break;
+			
 		
 		case GANHO_CORRENTE_100_200_A:
 			PinMuxAnalogico_bit0_clear;
@@ -365,7 +390,7 @@ void set_mux_corrente(unsigned int in)
 #define LIMIAR_SUPERIOR_BOBINA	600		//500mV;  2048 = 5V => 500mV = 204 .:. limiar+ = 2048 * 0.5V / 5V = 204; 		
 #define LIMIAR_INFERIOR_BOBINA	100		//100mV;  2048 = 5V => 100mV = 40  .:. limiar- = 2048 * 0.1 / 5V
 
-void MaquinaEstadoDetecaoRogowiski(Uint16 valorIn)
+void MaquinaEstadoDetecaoRogowiski(float valorIn)
 {
 	static Uint16 i = 0;
 	static float tensao = 0;
@@ -378,19 +403,19 @@ void MaquinaEstadoDetecaoRogowiski(Uint16 valorIn)
 	if(FlagDetectandoBobina == 1)
 	{	
 		if(PinoDetecaoRogowiski == 0) {
-			//LIBERA_INTEGRADOR;
-			RESETA_INTEGRADOR;
+			LIBERA_INTEGRADOR;
+			//RESETA_INTEGRADOR;
 			DELAY_US(2);
 			i = 0;
 			tensao = 0;
 			PinoDetecaoRogowiski_ligaFonteC;		//Habilita fonte de corrente 
 		}
 
-		tensao += (float)valorIn - Adc_offset[0];
+		tensao += (float) (valorIn - Adc_offset[0]);
 	
-		if(++i > 100)
+		if(++i > 200)
 		{
-			tensao = tensao / 100.0;
+			tensao = tensao / 200.0;
 			tensao *= 2.0;
 
 			if(tensao >= LIMIAR_SUPERIOR_BOBINA) {
@@ -416,10 +441,81 @@ void MaquinaEstadoDetecaoRogowiski(Uint16 valorIn)
 
 Uint16 DetecaoRogowiski() 
 {
-	FlagDetectandoBobina = 1;
-	while(FlagDetectandoBobina==1);
 
-	FlagDetectandoBobina = 0;
+}
+
+
+/**
+ * Sem bobina			com bobina
+ * deltaV = 750mV		deltaV = 750mv
+ * deltaT = 1.8ms		deltaT = 4ms
+ * 
+ * 1pu = 2.5V
+ * x   = 0.75V
+ * 
+ * deltaV_pu = 0.3 pu
+ * 
+ * 
+ * Se deltaV_pu < 0.2 pu em t=2ms depois de acionada a fonte de corrente
+ * então a bobina está presente. 
+ * 
+ * Se deltaV_pu > 0.2 em t=2ms, a bobina está ausente
+ */ 
+
+#define DELTA_V_PU_CRITICO  (0.2)
+int delay_us = 3000;
+Uint16 DetectaRogowiski(void)
+{
+#define N_AMOSTRAS	10	
+	float corrente[N_AMOSTRAS];
+	float deltaV_pu = 0;
+	float const_ajuste = (Rms.FaseA.fator_escala / ((float)CORRENTE_FUNDO_ESCALA) ); //leva em consideracao o ganho selecionado para que independente do ganho, a comparacao acontece nas mesmas bases
+	int i;
+	
+	//Desabilita_Pulsos();
+	
+	DEBUG_GPIO13 = 0;
+		
+    LIBERA_INTEGRADOR;
+	//DELAY_US(2);
+	PinoDetecaoRogowiski_ligaFonteC;		//Habilita fonte de corrente
+	
+	time_base.ticks = 0;
+	time_base.target = (delay_us/time_base.base_us);	//espera 4 ms;
+	while(time_base.ticks < time_base.target);
+	time_base.ticks = 0; 
+	
+	
+	for(i=0; i<N_AMOSTRAS; i++)
+	{
+		corrente[i] = corrente_pu * const_ajuste;
+		while( time_base.ticks < 1);
+		time_base.ticks = 0;
+	}
+	
+	for(i=0; i<N_AMOSTRAS; i++)
+		deltaV_pu += corrente[i] / (float) N_AMOSTRAS;
+	deltaV_pu = fabs(deltaV_pu);
+	
+	PinoDetecaoRogowiski_deslFonteC;		//Desabilita fonte de corrente
+	//DELAY_US(2);
+	RESETA_INTEGRADOR;
+	//DELAY_US(2);
+	
+	DEBUG_GPIO13 = 1;
+	
+	if(deltaV_pu < DELTA_V_PU_CRITICO) {
+		GpioDataRegs.GPBDAT.bit.GPIO34 = 1;
+		FlagResultadoDetecaoBobina = 1;	//Bobina Presente
+		return 1;
+	} 
+	else {
+		GpioDataRegs.GPBDAT.bit.GPIO34 = 0;
+		//SciReportarErro(ERRO_AUSENCIA_BOBINA);		
+		FlagResultadoDetecaoBobina = 0;	//Bobina Ausente
+		return 0;
+	}	
 	
 	return FlagResultadoDetecaoBobina;
 }
+

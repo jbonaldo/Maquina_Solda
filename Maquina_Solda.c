@@ -120,8 +120,8 @@ void main(void)
 //	Configura_ADC();
 
 	//Move as funcoes (marcadas com #pragma) da Flash para a RAM     
-//	MemCopy(&RamfuncsLoadStart, &RamfuncsLoadEnd, &RamfuncsRunStart);
-//	InitFlash();
+	MemCopy(&RamfuncsLoadStart, &RamfuncsLoadEnd, &RamfuncsRunStart);
+	InitFlash();
 
    Configura_EPwm1();
    Configura_EPwm2();
@@ -150,7 +150,7 @@ void main(void)
    Inicializa_Variaveis();
    
    InitCpuTimers(); //Timer q gera a taxa de amostragem
-   ConfigCpuTimer(&CpuTimer0, 150, 23);  //Timer0, 100MHz, periodo=80us
+   ConfigCpuTimer(&CpuTimer0, 150, T_AMOSTRAGEM_US);  //Timer0, 100MHz, periodo=80us
    CpuTimer0Regs.TCR.all = 0x4001; // Use write-only instruction to set TSS bit = 0
 //   CpuTimer0Regs.TCR.bit.TIE = 0;      // 0 = Disable/ 1 = Enable Timer Interrupt
    CpuTimer0Regs.TCR.bit.TIE = 1;      // 0 = Disable/ 1 = Enable Timer Interrupt	
@@ -207,7 +207,7 @@ void main(void)
 	LIBERA_INTEGRADOR;
 	RESETA_INTEGRADOR;
 
-	DetecaoRogowiski();
+	DetectaRogowiski();
 
     while(1) 
 	{
@@ -229,14 +229,14 @@ void main(void)
 
 interrupt void cpu_timer0_isr(void)
 {
-//	GpioDataRegs.GPATOGGLE.bit.GPIO24 = 1;
+	DEBUG_GPIO12 = 1;
 	if(!Solda.soldar)
 		Rms.FaseA.i = 1;
 	AquisitaCanal_1();
 
    	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1; // Acknowledge this interrupt to receive more interrupts from group 3
 
-//	GpioDataRegs.GPADAT.bit.GPIO24 = 0;
+	DEBUG_GPIO12 = 0;
 }
 
 
@@ -244,6 +244,7 @@ interrupt void cpu_timer0_isr(void)
 interrupt void epwm1_isr(void)
 {	
 	TogglePinoDetectaZero_errado = 1;
+	DEBUG_GPIO14 = 1;
 	
 	EINT;	//Permite q esta interrup seja interrompida
 				//qdo esta interrup terminar, 
@@ -277,9 +278,7 @@ interrupt void epwm1_isr(void)
 		{
 			//Alpha ~= 189 graus
 			EPwm1Regs.CMPA.half.CMPA =  Controle_SCRs.ticks_min;
-			//EPwm4Regs.AQCTLA.bit.PRD = AQ_CLEAR;      //Desabilita ePWM4  // Retirar pulsos do SCR
-			EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;      //Desabilita ePWM4  // Retirar pulsos do SCR
-			EPwm4Regs.AQCTLA.bit.CAU = AQ_SET;
+			trem_pulsos_tiristor_remover();
 			//GpioDataRegs.GPADAT.bit.GPIO15 = 0;
 		}
 	
@@ -298,8 +297,7 @@ interrupt void epwm1_isr(void)
 			{
 				LIBERA_INTEGRADOR;   //Termina reset (integrador volta a operar)
 				//Gera pulsos para fase1
-				EPwm4Regs.AQCTLA.bit.ZRO = AQ_SET;      //Habilita ePWM4
-				EPwm4Regs.AQCTLA.bit.CAU = AQ_CLEAR;
+				trem_pulsos_tiristor_acionar();
 				EPwm4Regs.TBCTR = 0x0000;
 			}
 
@@ -310,6 +308,8 @@ interrupt void epwm1_isr(void)
 	EPwm1Regs.ETCLR.bit.INT = 1;            // Clear INT flag for this timer  
 	PieCtrlRegs.PIEACK.all = PIEACK_GROUP3; // Acknowledge this interrupt to receive more interrupts from group 3
 	//GpioDataRegs.GPADAT.bit.GPIO15 = 0;	
+	
+	DEBUG_GPIO14 = 0;
 }
 
 interrupt void epwm2_isr(void)

@@ -15,13 +15,13 @@ C_DEPS += \
 ./Jakson_Funcoes.pp \
 ./Maquina_Solda.pp 
 
-OBJS__QTD += \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Jakson_Funcoes.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Maquina_Solda.obj" 
-
 C_DEPS__QTD += \
 ".\Jakson_Funcoes.pp" \
 ".\Maquina_Solda.pp" 
+
+OBJS__QTD += \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Jakson_Funcoes.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Maquina_Solda.obj" 
 
 C_SRCS_QUOTED += \
 "../Jakson_Funcoes.c" \

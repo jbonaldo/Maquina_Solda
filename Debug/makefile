@@ -36,7 +36,7 @@ $(GEN_CMDS_QUOTED) \
 "C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Maquina_Solda.obj" \
 "C:/Documents and Settings/San_Jose/Desktop/TI/Maquina_Solda/DSP_Maquina_Solda_Completa/Debug/Jakson_Funcoes.obj" \
 -l"rts2800_fpu32.lib" \
-"../DSP2833x_common/cmd/28335_RAM_lnk.cmd" \
+"../DSP2833x_common/cmd/F28335.cmd" \
 
 -include ../makefile.init
 
@@ -60,80 +60,80 @@ RMDIR := RMDIR /S/Q
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(S_DEPS)),)
+-include $(S_DEPS)
+endif
 ifneq ($(strip $(S62_DEPS)),)
 -include $(S62_DEPS)
-endif
-ifneq ($(strip $(ASM_DEPS)),)
--include $(ASM_DEPS)
-endif
-ifneq ($(strip $(C55_DEPS)),)
--include $(C55_DEPS)
 endif
 ifneq ($(strip $(S_UPPER_DEPS)),)
 -include $(S_UPPER_DEPS)
 endif
-ifneq ($(strip $(S_DEPS)),)
--include $(S_DEPS)
-endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
-endif
 ifneq ($(strip $(C64_DEPS)),)
 -include $(C64_DEPS)
 endif
-ifneq ($(strip $(C43_DEPS)),)
--include $(C43_DEPS)
-endif
-ifneq ($(strip $(C62_DEPS)),)
--include $(C62_DEPS)
-endif
-ifneq ($(strip $(C??_DEPS)),)
--include $(C??_DEPS)
-endif
-ifneq ($(strip $(S??_DEPS)),)
--include $(S??_DEPS)
-endif
-ifneq ($(strip $(S55_DEPS)),)
--include $(S55_DEPS)
-endif
-ifneq ($(strip $(C_DEPS)),)
--include $(C_DEPS)
-endif
-ifneq ($(strip $(C_UPPER_DEPS)),)
--include $(C_UPPER_DEPS)
-endif
-ifneq ($(strip $(SA_DEPS)),)
--include $(SA_DEPS)
-endif
-ifneq ($(strip $(C++_DEPS)),)
--include $(C++_DEPS)
-endif
-ifneq ($(strip $(K_DEPS)),)
--include $(K_DEPS)
+ifneq ($(strip $(ASM_DEPS)),)
+-include $(ASM_DEPS)
 endif
 ifneq ($(strip $(CC_DEPS)),)
 -include $(CC_DEPS)
 endif
-ifneq ($(strip $(S64_DEPS)),)
--include $(S64_DEPS)
-endif
-ifneq ($(strip $(CXX_DEPS)),)
--include $(CXX_DEPS)
-endif
-ifneq ($(strip $(S43_DEPS)),)
--include $(S43_DEPS)
-endif
-ifneq ($(strip $(S67_DEPS)),)
--include $(S67_DEPS)
+ifneq ($(strip $(S55_DEPS)),)
+-include $(S55_DEPS)
 endif
 ifneq ($(strip $(C67_DEPS)),)
 -include $(C67_DEPS)
 endif
+ifneq ($(strip $(C??_DEPS)),)
+-include $(C??_DEPS)
+endif
+ifneq ($(strip $(CPP_DEPS)),)
+-include $(CPP_DEPS)
+endif
+ifneq ($(strip $(S??_DEPS)),)
+-include $(S??_DEPS)
+endif
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
+ifneq ($(strip $(C62_DEPS)),)
+-include $(C62_DEPS)
+endif
+ifneq ($(strip $(CXX_DEPS)),)
+-include $(CXX_DEPS)
+endif
+ifneq ($(strip $(C++_DEPS)),)
+-include $(C++_DEPS)
+endif
 ifneq ($(strip $(ASM_UPPER_DEPS)),)
 -include $(ASM_UPPER_DEPS)
 endif
+ifneq ($(strip $(K_DEPS)),)
+-include $(K_DEPS)
+endif
+ifneq ($(strip $(C43_DEPS)),)
+-include $(C43_DEPS)
+endif
+ifneq ($(strip $(S67_DEPS)),)
+-include $(S67_DEPS)
+endif
+ifneq ($(strip $(SA_DEPS)),)
+-include $(SA_DEPS)
+endif
+ifneq ($(strip $(S43_DEPS)),)
+-include $(S43_DEPS)
+endif
 ifneq ($(strip $(OPT_DEPS)),)
 -include $(OPT_DEPS)
+endif
+ifneq ($(strip $(S64_DEPS)),)
+-include $(S64_DEPS)
+endif
+ifneq ($(strip $(C55_DEPS)),)
+-include $(C55_DEPS)
+endif
+ifneq ($(strip $(C_UPPER_DEPS)),)
+-include $(C_UPPER_DEPS)
 endif
 endif
 
@@ -158,11 +158,11 @@ MaquinaSolda2011.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(C2000_EXECUTABLE_OUTPUTS__QTD) "MaquinaSolda2011.out"
+	-$(RM) ".\Jakson_Funcoes.pp" ".\Maquina_Solda.pp" ".\Jakson_Bibliotecas\Comandos.pp" ".\Jakson_Bibliotecas\J_RMS.pp" ".\Jakson_Bibliotecas\J_SciA_Protocolo_27_02_10.pp" ".\Jakson_Bibliotecas\J_SpiA.pp" ".\Jakson_Bibliotecas\J_xInt.pp" ".\Jakson_Bibliotecas\Modo_KIR.pp" ".\Jakson_Bibliotecas\PLL.pp" ".\Jakson_Bibliotecas\Protocolo.pp" ".\Jakson_Bibliotecas\Solda_v1.pp" ".\DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.pp" ".\DSP2833x_common\source\DSP2833x_Adc.pp" ".\DSP2833x_common\source\DSP2833x_CpuTimers.pp" ".\DSP2833x_common\source\DSP2833x_DefaultIsr.pp" ".\DSP2833x_common\source\DSP2833x_EPwm.pp" ".\DSP2833x_common\source\DSP2833x_MemCopy.pp" ".\DSP2833x_common\source\DSP2833x_PieCtrl.pp" ".\DSP2833x_common\source\DSP2833x_PieVect.pp" ".\DSP2833x_common\source\DSP2833x_Spi.pp" ".\DSP2833x_common\source\DSP2833x_SysCtrl.pp" 
 	-$(RM) "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Jakson_Funcoes.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Maquina_Solda.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Comandos.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_RMS.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_SciA_Protocolo_27_02_10.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_SpiA.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_xInt.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Modo_KIR.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\PLL.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Protocolo.obj" 
 	-$(RM) "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Solda_v1.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_GlobalVariableDefs.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_ADC_cal.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_Adc.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_CodeStartBranch.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_CpuTimers.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_DefaultIsr.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_EPwm.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_MemCopy.obj" 
 	-$(RM) "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_PieCtrl.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_PieVect.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_Spi.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_SysCtrl.obj" "C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\DSP2833x_usDelay.obj" 
 	-$(RM) ".\DSP2833x_common\source\DSP2833x_ADC_cal.pp" ".\DSP2833x_common\source\DSP2833x_CodeStartBranch.pp" ".\DSP2833x_common\source\DSP2833x_usDelay.pp" 
-	-$(RM) ".\Jakson_Funcoes.pp" ".\Maquina_Solda.pp" ".\Jakson_Bibliotecas\Comandos.pp" ".\Jakson_Bibliotecas\J_RMS.pp" ".\Jakson_Bibliotecas\J_SciA_Protocolo_27_02_10.pp" ".\Jakson_Bibliotecas\J_SpiA.pp" ".\Jakson_Bibliotecas\J_xInt.pp" ".\Jakson_Bibliotecas\Modo_KIR.pp" ".\Jakson_Bibliotecas\PLL.pp" ".\Jakson_Bibliotecas\Protocolo.pp" ".\Jakson_Bibliotecas\Solda_v1.pp" ".\DSP2833x_headers\source\DSP2833x_GlobalVariableDefs.pp" ".\DSP2833x_common\source\DSP2833x_Adc.pp" ".\DSP2833x_common\source\DSP2833x_CpuTimers.pp" ".\DSP2833x_common\source\DSP2833x_DefaultIsr.pp" ".\DSP2833x_common\source\DSP2833x_EPwm.pp" ".\DSP2833x_common\source\DSP2833x_MemCopy.pp" ".\DSP2833x_common\source\DSP2833x_PieCtrl.pp" ".\DSP2833x_common\source\DSP2833x_PieVect.pp" ".\DSP2833x_common\source\DSP2833x_Spi.pp" ".\DSP2833x_common\source\DSP2833x_SysCtrl.pp" 
 	-@echo ' '
 
 .PHONY: all clean dependents

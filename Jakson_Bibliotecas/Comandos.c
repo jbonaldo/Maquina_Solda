@@ -190,7 +190,7 @@ void Comandos(char funcao, unsigned long int param)
 			//DevolveACK(funcao);
 			SciA_Enviar_Pacote(funcao, parametro);
 
-		if( DetecaoRogowiski() == 1 ) 
+		if( DetectaRogowiski() == 1 ) 
 		{
 
 		  	if(parametro.unLong == 0) {
@@ -226,15 +226,13 @@ void Comandos(char funcao, unsigned long int param)
 			//Fim WorkAround
 		
 			//Se a bobina estiver conectada e o Pino de solda estiver ativo...//
-			//if( DetecaoRogowiski() == 1 ) {
 			
 			//////////// tirado para debug ///////////
 			//////// ATENCAO ////////////////
 				//if(PinoSoldar == PIN_ATIVO )	//Além do comando Soldar é necessario que este pino esteja no nídel SOLDAR
 		   //////////// COLCOAR DE VOLTA ////////////////////
-					FlagSoldar = 1;
+				FlagSoldar = 1;
 				GpioDataRegs.GPBTOGGLE.bit.GPIO32 = 1;
-			//}
 			}
 			else {
 				DELAY_US(100000);

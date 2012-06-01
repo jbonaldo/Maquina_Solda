@@ -2,6 +2,9 @@
 	Desenvolvido por Jakson Bonaldo   
 	Campinas - SP 		19/08/09
 	Rotinas referentes à SciA
+	
+	Como o DSP tem um buffer para dados transmitidos e recebidos de 16 posicoes
+	não se torna necessário implementar buffers via software.
 
 	Gpio28 -> Rx
 	Gpio29 -> Tx
@@ -56,7 +59,7 @@ void Configura_SciA()
 	SciaRegs.SCIFFRX.bit.RXFFINTCLR = 1; //Limpa flag de interrup Rx
 	SciaRegs.SCIFFRX.bit.RXFFIENA = 0;  //Habilita interrupcao Rx
     SciaRegs.SCIFFCT.all=0x00;
-	SciaRegs.SCIFFCT.bit.FFTXDLY = 0xFF;//0x29;	//500 us//Delay entre transmissoes de bytes. (0xFF=256 ciclos do baund rate) 
+	SciaRegs.SCIFFCT.bit.FFTXDLY = 0x40;//0x29;	//500 us//Delay entre transmissoes de bytes. (0xFF=256 ciclos do baund rate) 
 
     
     SciaRegs.SCIFFTX.bit.TXFIFOXRESET=1;
@@ -93,8 +96,6 @@ void SciA_Transmitir(int a)
     //while (SciaRegs.SCIFFTX.bit.TXFFST != 0) {}
 
     SciaRegs.SCITXBUF=a;
-	DELAY_US(20);
-
 }
 
 char SciA_Receber()
@@ -217,7 +218,7 @@ void RecebePacote(void)
 		
 		buffer[indice++] = temp;
 		
-		if(indice >= TAM_FIFO-1) 
+		if(indice >= TAM_FIFO) 
 		{
 		    //realiza o cheksum dos dados recebidos
 		    for(i=0; i<(TAM_FIFO-1); i++) 

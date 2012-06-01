@@ -36,17 +36,6 @@ C_DEPS += \
 ./Jakson_Bibliotecas/Protocolo.pp \
 ./Jakson_Bibliotecas/Solda_v1.pp 
 
-OBJS__QTD += \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Comandos.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_RMS.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_SciA_Protocolo_27_02_10.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_SpiA.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_xInt.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Modo_KIR.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\PLL.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Protocolo.obj" \
-"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Solda_v1.obj" 
-
 C_DEPS__QTD += \
 ".\Jakson_Bibliotecas\Comandos.pp" \
 ".\Jakson_Bibliotecas\J_RMS.pp" \
@@ -57,6 +46,17 @@ C_DEPS__QTD += \
 ".\Jakson_Bibliotecas\PLL.pp" \
 ".\Jakson_Bibliotecas\Protocolo.pp" \
 ".\Jakson_Bibliotecas\Solda_v1.pp" 
+
+OBJS__QTD += \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Comandos.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_RMS.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_SciA_Protocolo_27_02_10.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_SpiA.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\J_xInt.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Modo_KIR.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\PLL.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Protocolo.obj" \
+"C:\Documents and Settings\San_Jose\Desktop\TI\Maquina_Solda\DSP_Maquina_Solda_Completa\Debug\Solda_v1.obj" 
 
 C_SRCS_QUOTED += \
 "../Jakson_Bibliotecas/Comandos.c" \
